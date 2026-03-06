@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PiggyFlow</title>
+<script>
+  // Supabase magic link lands here with #access_token=... in the hash
+  // Redirect to the actual app preserving everything
+  var hash = window.location.hash;
+  var search = window.location.search;
+  window.location.replace('https://maxbloom76.github.io/piggyflow/' + search + hash);
+</script>
+</head>
+<body></body>
+</html>
