@@ -1,17 +1,53 @@
 {
   "name": "PiggyFlow",
   "short_name": "PiggyFlow",
-  "description": "Il tuo tracker personale per entrate e uscite",
+  "description": "Il tuo tracker personale per entrate e uscite \u2014 Personal finance tracker",
   "start_url": "/piggyflow/",
+  "scope": "/piggyflow/",
   "display": "standalone",
   "background_color": "#1a1f1a",
   "theme_color": "#1a1f1a",
   "orientation": "portrait-primary",
+  "categories": [
+    "finance",
+    "productivity"
+  ],
+  "lang": "it",
   "icons": [
     {
-      "src": "data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🐷&lt;/text&gt;&lt;/svg&gt;",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
