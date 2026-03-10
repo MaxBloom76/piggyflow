@@ -1390,7 +1390,7 @@
       </div>
       <div class="s-row">
         <span class="s-label" data-i18n="valuta">Valuta</span>
-        <select class="s-select" id="s-currency" style="font-size:0.78rem;"></select>
+        <select class="s-select" id="s-currency" style="font-size:0.78rem;max-width:180px;"></select>
       </div>
     </div>
 
@@ -2022,7 +2022,7 @@ let cfg = {
   lang: (navigator.language || 'it').slice(0, 2),
   light: false,
   pal: '',
-  currency: '',        // e.g. 'EUR', 'GBP' — empty = auto from lang
+  currency: '',
   qInc: ['Stipendio','Freelance','Rimborso','Bonus'],
   qExp: ['Affitto','Spesa','Bollette','Carburante','Ristorante','Abbonamenti'],
   cats: ['Casa','Cibo','Trasporti','Svago','Salute','Lavoro','Altro'],
@@ -2051,8 +2051,8 @@ const L = {
     login_title:"Bentornato!", login_sub:"Inserisci la tua email per accedere a PiggyFlow. Ti invieremo un link magico: nessuna password da ricordare.", login_email_ph:"La tua email", login_btn:"Invia Magic Link", login_sending:"Invio in corso…", login_sent_title:"Email inviata! 🎉", login_sent_sub:"Controlla la tua casella di posta e clicca il link che ti abbiamo inviato. Puoi chiudere questa schermata.", login_sent_resend:"Non hai ricevuto nulla? Rinvia", login_error:"Qualcosa è andato storto. Controlla l'email e riprova.", login_invalid:"Inserisci un'email valida.", logout:"Esci dall'account", logout_confirm:"Sei sicuro di voler uscire?", logged_as:"Connesso come",
     privacy_btn:"Privacy Policy", privacy_title:"Privacy Policy", privacy_accept:"Ho letto e accetto la Privacy Policy", privacy_required:"È necessario accettare la Privacy Policy per continuare.", privacy_link:"Leggi la Privacy Policy", delete_data:"🗑 Richiedi cancellazione dati", delete_confirm:"Sei sicuro di voler cancellare tutti i tuoi dati? Questa azione è irreversibile.", delete_done:"I tuoi dati sono stati cancellati. Sarai disconnesso.",
     guida:'Guida', guida_btn:'📖 Guida & Istruzioni',
-    guide_prev:'← Indietro', guide_next:'Avanti →', guide_finish:'Inizia!', guide_skip:'Salta', guide_of:'di',
     changelog_title:'🆕 Novità in PiggyFlow', changelog_close:'Ho capito!',
+    guide_prev:'← Indietro', guide_next:'Avanti →', guide_finish:'Inizia!', guide_skip:'Salta', guide_of:'di',
     cats:'Categorie', budgets:'Budget mensile', budget_hint:'Budget (€)', no_budget:'Nessun budget', over_budget:'Sforato!', recurring:'Ricorrenti', rec_add:'+ Aggiungi ricorrente', rec_hint:'Voce automatica ogni mese', rec_applied:'Ricorrenti inseriti ✓', export_csv:'📥 Esporta CSV', annual:'Riepilogo annuale', annual_btn:'📅 Riepilogo anno', trend:'Andamento 6 mesi', note_ph:'Nota (opzionale)', cat_label:'Categoria', budget_section:'Budget per categoria', rec_desc:'Descrizione', rec_amt:'Importo', rec_type:'Tipo', rec_cat:'Categoria', rec_del:'Rimuovi', salva_rec:'Salva', of_budget:'di budget',
     guide_slides:[{"icon": "🐷", "title": "Benvenuto in PiggyFlow!", "body": "Ciao! PiggyFlow è il tuo tracker personale per <b>entrate e uscite mensili</b>. Semplice, sicuro e sempre con te. I tuoi dati vengono <b>cifrati e salvati nel cloud</b> automaticamente ad ogni modifica — puoi accedere da qualunque dispositivo. Questa guida ti mostra tutto in pochi passi."}, {"icon": "📅", "title": "Il calendario mensile", "body": "La schermata principale mostra il <b>mese corrente</b> come griglia di card giornaliere. Ogni card mostra il giorno della settimana e, se hai inserito movimenti, un riepilogo con <b>entrate in verde</b> e <b>uscite in rosso</b>. La card di <b>oggi è evidenziata</b> e si apre automaticamente. Usa le <b>frecce ← →</b> in alto per navigare tra i mesi, o il menu a tendina per scegliere l'anno."}, {"icon": "✏️", "title": "Inserire entrate e uscite", "body": "Tocca una card giorno per aprirla. Trovi due colonne: <b>ENTRATE</b> a sinistra e <b>USCITE</b> a destra. Premi <b>+ aggiungi entrata</b> o <b>+ aggiungi uscita</b> per inserire una voce. Per ogni voce puoi compilare: <b>Descrizione</b> (es. Stipendio, Spesa), <b>Importo</b> in euro, <b>Categoria</b> dal menu 🏷 (Casa, Cibo…) e una <b>Nota opzionale</b> nel campo sottostante. Tutto viene salvato automaticamente mentre scrivi."}, {"icon": "⚡", "title": "Voci rapide e autocompletamento", "body": "Nei campi <b>Descrizione</b> inizia a digitare e appariranno suggerimenti personalizzati — le tue voci rapide. Puoi configurarle nelle <b>Impostazioni ⚙</b>: aggiungi i nomi che usi più spesso (Affitto, Stipendio, Spesa…) per inserirli con un tocco. Hai due liste separate: una per le <b>Entrate</b> e una per le <b>Uscite</b>. Premi <b>+</b> per aggiungere, tocca <b>✕</b> per rimuovere."}, {"icon": "🏷️", "title": "Categorie personalizzate", "body": "Puoi creare le tue <b>categorie di spesa</b> (Casa, Cibo, Trasporti, Svago…) dalle Impostazioni ⚙, sezione <b>Categorie</b>. Una volta create, appaiono come menu a tendina su ogni voce. Le categorie sono fondamentali per i <b>grafici a torta</b> e per tenere traccia di <b>dove vanno i tuoi soldi</b>. Puoi aggiungerne quante vuoi e rimuoverle in qualsiasi momento."}, {"icon": "🎯", "title": "Budget mensile per categoria", "body": "Nelle Impostazioni ⚙, sezione <b>Budget per categoria</b>, puoi assegnare un limite di spesa mensile a ciascuna categoria. Nella schermata principale appariranno delle <b>barre di progresso colorate</b> che mostrano quanto hai già speso rispetto al tetto fissato. Se superi il budget, la barra diventa <b>rossa</b> con l'avviso <b>Sforato!</b> — un promemoria visivo immediato prima che sia troppo tardi."}, {"icon": "🔄", "title": "Movimenti ricorrenti", "body": "Hai spese o entrate fisse ogni mese? Affitto, abbonamenti, stipendio? Vai in Impostazioni ⚙, sezione <b>Ricorrenti</b>. Aggiungi la voce con tipo (entrata/uscita), descrizione, importo e categoria. PiggyFlow le inserirà <b>automaticamente il primo del mese</b> al tuo primo accesso — niente più dimenticanze. Puoi modificarle o eliminarle in qualsiasi momento."}, {"icon": "◉", "title": "Grafici e statistiche", "body": "Premi il pulsante <b>◉</b> in alto a destra per i grafici. Hai due visualizzazioni:<br><b>🍩 Mese</b> — due grafici a ciambella, uno per le entrate e uno per le uscite del mese selezionato, suddivisi per categoria con legenda. Tocca una fetta per vedere l'importo esatto.<br><b>📈 Trend</b> — grafico a linee con l'andamento di entrate e uscite degli <b>ultimi 6 mesi</b>, per vedere la tua evoluzione nel tempo."}, {"icon": "📅", "title": "Riepilogo annuale", "body": "Nelle Impostazioni ⚙ trovi il pulsante <b>📅 Riepilogo anno</b>. Si apre una schermata con tutti e 12 i mesi dell'anno affiancati: entrate, uscite e saldo mese per mese. In fondo trovi il <b>totale annuale</b>. Puoi navigare tra gli anni con le frecce ← →. Il mese corrente è evidenziato. Perfetto per fare il punto della situazione a fine anno o per confrontare periodi diversi."}, {"icon": "📥", "title": "Esporta i tuoi dati", "body": "Vuoi analizzare i dati su Excel o conservarne una copia? Dalle Impostazioni ⚙ premi <b>📥 Esporta CSV</b>. Scarichi un file con tutte le tue voci: data, tipo, descrizione, importo, categoria e nota. Compatibile con Excel, Google Sheets e qualsiasi foglio di calcolo. Il file si chiama <b>PiggyFlow_[anno].csv</b> e viene scaricato direttamente sul tuo dispositivo."}, {"icon": "⚙️", "title": "Impostazioni e personalizzazione", "body": "Premi <b>⚙</b> per personalizzare tutto: <b>Nome</b> visualizzato nell'app, <b>Lingua</b> (Italiano, English, Español, Français, Deutsch, Português), <b>Tema</b> chiaro o scuro, <b>Palette colori</b> (6 combinazioni diverse). Trovi anche i pulsanti per rileggere questa guida, consultare le <b>Note Legali e Privacy</b>, e il pulsante di <b>disconnessione</b>. Ogni modifica viene salvata automaticamente."}, {"icon": "🔒", "title": "Sicurezza e privacy dei tuoi dati", "body": "I tuoi dati sono protetti da <b>tre livelli di sicurezza</b>:<br>🔐 <b>Cifratura nel browser</b> (AES-256): i dati vengono cifrati sul tuo dispositivo prima di essere inviati — il server vede solo codice illeggibile.<br>☁️ <b>Cifratura server</b>: Supabase (certificato SOC 2) cifra tutto a riposo.<br>🔒 <b>HTTPS</b>: ogni comunicazione è crittografata.<br>Solo tu, con la tua email, puoi decifrare i tuoi dati. Nessun dato è condiviso con terzi o usato per pubblicità. Per dettagli tocca <b>Note Legali &amp; Privacy</b> nelle impostazioni."}]
   },
@@ -2071,8 +2071,8 @@ const L = {
     login_title:"Welcome back!", login_sub:"Enter your email to access PiggyFlow. We'll send you a magic link — no password needed.", login_email_ph:"Your email", login_btn:"Send Magic Link", login_sending:"Sending…", login_sent_title:"Email sent! 🎉", login_sent_sub:"Check your inbox and click the link we sent you. You can close this screen.", login_sent_resend:"Didn't receive anything? Resend", login_error:"Something went wrong. Check your email and try again.", login_invalid:"Please enter a valid email.",
     privacy_btn:"Privacy Policy", privacy_title:"Privacy Policy", privacy_accept:"I have read and accept the Privacy Policy", privacy_required:"You must accept the Privacy Policy to continue.", privacy_link:"Read the Privacy Policy", delete_data:"🗑 Request data deletion", delete_confirm:"Are you sure you want to delete all your data? This action is irreversible.", delete_done:"Your data has been deleted. You will be signed out.", logout:"Sign out", logout_confirm:"Are you sure you want to sign out?", logged_as:"Signed in as",
     guida:'Guide', guida_btn:'📖 Guide & Instructions',
-    guide_prev:'← Back', guide_next:'Next →', guide_finish:'Get started!', guide_skip:'Skip', guide_of:'of',
     changelog_title:"🆕 What's new in PiggyFlow", changelog_close:'Got it!',
+    guide_prev:'← Back', guide_next:'Next →', guide_finish:'Get started!', guide_skip:'Skip', guide_of:'of',
     cats:'Categories', budgets:'Monthly budget', budget_hint:'Budget (€)', no_budget:'No budget set', over_budget:'Over budget!', recurring:'Recurring', rec_add:'+ Add recurring', rec_hint:'Automatic entry every month', rec_applied:'Recurring applied ✓', export_csv:'📥 Export CSV', annual:'Annual summary', annual_btn:'📅 Year summary', trend:'6-month trend', note_ph:'Note (optional)', cat_label:'Category', budget_section:'Budget per category', rec_desc:'Description', rec_amt:'Amount', rec_type:'Type', rec_cat:'Category', rec_del:'Remove', salva_rec:'Save', of_budget:'of budget',
     guide_slides:[{"icon": "🐷", "title": "Welcome to PiggyFlow!", "body": "Hi there! PiggyFlow is your personal tracker for <b>monthly income and expenses</b>. Simple, secure and always with you. Your data is <b>encrypted and saved to the cloud</b> automatically with every change — access it from any device. This guide will walk you through everything in a few easy steps."}, {"icon": "📅", "title": "The monthly calendar", "body": "The main screen shows the <b>current month</b> as a grid of daily cards. Each card shows the day of the week and, if you've added entries, a summary with <b>income in green</b> and <b>expenses in red</b>. <b>Today's card is highlighted</b> and opens automatically. Use the <b>← → arrows</b> at the top to navigate between months, or the dropdown to choose the year."}, {"icon": "✏️", "title": "Adding income and expenses", "body": "Tap a day card to open it. You'll find two columns: <b>INCOME</b> on the left and <b>EXPENSES</b> on the right. Press <b>+ add income</b> or <b>+ add expense</b> to add an entry. For each entry you can fill in: <b>Description</b> (e.g. Salary, Groceries), <b>Amount</b> in euros, <b>Category</b> from the 🏷 menu, and an optional <b>Note</b> in the field below. Everything saves automatically as you type."}, {"icon": "⚡", "title": "Quick items and autocomplete", "body": "In <b>Description</b> fields, start typing and your personalised suggestions will appear. Set them up in <b>Settings ⚙</b>: add the names you use most often (Rent, Salary, Groceries…) to insert them with a tap. You have two separate lists: one for <b>Income</b> and one for <b>Expenses</b>. Press <b>+</b> to add, tap <b>✕</b> to remove."}, {"icon": "🏷️", "title": "Custom categories", "body": "Create your own <b>spending categories</b> (Housing, Food, Transport, Fun…) in Settings ⚙, under <b>Categories</b>. Once created, they appear as a dropdown on every entry. Categories are key for <b>pie charts</b> and for understanding <b>where your money goes</b>. Add as many as you like and remove them at any time."}, {"icon": "🎯", "title": "Monthly budget per category", "body": "In Settings ⚙, under <b>Budget per category</b>, set a monthly spending limit for each category. On the main screen, <b>colour progress bars</b> will show how much you've spent vs your limit. If you go over budget, the bar turns <b>red</b> with an <b>Over budget!</b> warning — a clear visual reminder before it's too late."}, {"icon": "🔄", "title": "Recurring entries", "body": "Have fixed monthly expenses or income? Rent, subscriptions, salary? Go to Settings ⚙, section <b>Recurring</b>. Add the entry with type (income/expense), description, amount and category. PiggyFlow will insert them <b>automatically on the 1st of each month</b> at your first login — no more forgetting. Edit or delete them any time."}, {"icon": "◉", "title": "Charts and statistics", "body": "Press the <b>◉</b> button in the top right for charts. Two views available:<br><b>🍩 Month</b> — two doughnut charts, one for income and one for expenses in the selected month, broken down by category with legend. Tap a slice to see the exact amount.<br><b>📈 Trend</b> — line chart showing income and expenses over the <b>last 6 months</b>, so you can see how you're doing over time."}, {"icon": "📅", "title": "Annual summary", "body": "In Settings ⚙ you'll find the <b>📅 Year summary</b> button. It opens a screen showing all 12 months side by side: income, expenses and balance month by month. At the bottom you'll see the <b>annual total</b>. Navigate between years with the ← → arrows. The current month is highlighted. Perfect for a year-end review or comparing different periods."}, {"icon": "📥", "title": "Export your data", "body": "Want to analyse your data in Excel or keep a backup? In Settings ⚙ press <b>📥 Export CSV</b>. You'll download a file with all your entries: date, type, description, amount, category and note. Compatible with Excel, Google Sheets and any spreadsheet app. The file is named <b>PiggyFlow_[year].csv</b> and downloads directly to your device."}, {"icon": "⚙️", "title": "Settings and personalisation", "body": "Press <b>⚙</b> to customise everything: <b>Display name</b>, <b>Language</b> (Italiano, English, Español, Français, Deutsch, Português), <b>Light/dark theme</b>, <b>Colour palette</b> (6 options). You'll also find buttons to re-read this guide, view <b>Legal Notes &amp; Privacy</b>, and <b>sign out</b>. All changes are saved automatically."}, {"icon": "🔒", "title": "Your data security and privacy", "body": "Your data is protected by <b>three layers of security</b>:<br>🔐 <b>Browser encryption</b> (AES-256): data is encrypted on your device before being sent — the server only sees unreadable code.<br>☁️ <b>Server encryption</b>: Supabase (SOC 2 certified) encrypts everything at rest.<br>🔒 <b>HTTPS</b>: every communication is encrypted in transit.<br>Only you, with your email, can decrypt your data. No data is shared with third parties or used for advertising. For details, tap <b>Legal Notes &amp; Privacy</b> in settings."}]
   },
@@ -2091,8 +2091,8 @@ const L = {
     login_title:"¡Bienvenido de nuevo!", login_sub:"Introduce tu email para acceder a PiggyFlow. Te enviaremos un enlace mágico, sin contraseña.", login_email_ph:"Tu email", login_btn:"Enviar Magic Link", login_sending:"Enviando…", login_sent_title:"¡Email enviado! 🎉", login_sent_sub:"Revisa tu bandeja de entrada y haz clic en el enlace que te enviamos.", login_sent_resend:"¿No recibiste nada? Reenviar", login_error:"Algo salió mal. Verifica el email e inténtalo de nuevo.", login_invalid:"Introduce un email válido.",
     privacy_btn:"Política de Privacidad", privacy_title:"Política de Privacidad", privacy_accept:"He leído y acepto la Política de Privacidad", privacy_required:"Debes aceptar la Política de Privacidad para continuar.", privacy_link:"Leer la Política de Privacidad", delete_data:"🗑 Solicitar eliminación de datos", delete_confirm:"¿Seguro que quieres eliminar todos tus datos? Esta acción es irreversible.", delete_done:"Tus datos han sido eliminados. Se cerrará tu sesión.", logout:"Cerrar sesión", logout_confirm:"¿Seguro que quieres cerrar sesión?", logged_as:"Conectado como",
     guida:'Guía', guida_btn:'📖 Guía e Instrucciones',
-    guide_prev:'← Atrás', guide_next:'Siguiente →', guide_finish:'¡Empezar!', guide_skip:'Saltar', guide_of:'de',
     changelog_title:'🆕 Novedades en PiggyFlow', changelog_close:'¡Entendido!',
+    guide_prev:'← Atrás', guide_next:'Siguiente →', guide_finish:'¡Empezar!', guide_skip:'Saltar', guide_of:'de',
     cats:'Categorías', budgets:'Presupuesto mensual', budget_hint:'Presupuesto (€)', no_budget:'Sin presupuesto', over_budget:'¡Superado!', recurring:'Recurrentes', rec_add:'+ Agregar recurrente', rec_hint:'Entrada automática cada mes', rec_applied:'Recurrentes aplicados ✓', export_csv:'📥 Exportar CSV', annual:'Resumen anual', annual_btn:'📅 Resumen año', trend:'Tendencia 6 meses', note_ph:'Nota (opcional)', cat_label:'Categoría', budget_section:'Presupuesto por categoría', rec_desc:'Descripción', rec_amt:'Importe', rec_type:'Tipo', rec_cat:'Categoría', rec_del:'Eliminar', salva_rec:'Guardar', of_budget:'del presupuesto',
     guide_slides:[{"icon": "🐷", "title": "¡Bienvenido a PiggyFlow!", "body": "¡Hola! PiggyFlow es tu tracker personal de <b>ingresos y gastos mensuales</b>. Sencillo, seguro y siempre contigo. Tus datos se <b>cifran y guardan en la nube</b> automáticamente con cada cambio. Esta guía te muestra todo en pocos pasos."}, {"icon": "📅", "title": "El calendario mensual", "body": "La pantalla principal muestra el <b>mes actual</b> como una cuadrícula de tarjetas diarias. Cada tarjeta muestra el día de la semana y, si hay movimientos, un resumen con <b>ingresos en verde</b> y <b>gastos en rojo</b>. La <b>tarjeta de hoy</b> está resaltada y se abre automáticamente. Usa las <b>flechas ← →</b> para navegar entre meses."}, {"icon": "✏️", "title": "Añadir ingresos y gastos", "body": "Toca una tarjeta del día para abrirla. Encontrarás dos columnas: <b>INGRESOS</b> a la izquierda y <b>GASTOS</b> a la derecha. Pulsa <b>+ añadir</b> para insertar una entrada. Por cada entrada puedes rellenar: <b>Descripción</b>, <b>Importe</b>, <b>Categoría</b> desde el menú 🏷 y una <b>Nota opcional</b>. Todo se guarda automáticamente mientras escribes."}, {"icon": "⚡", "title": "Entradas rápidas", "body": "En los campos de <b>Descripción</b>, empieza a escribir y aparecerán sugerencias personalizadas. Configúralas en <b>Ajustes ⚙</b>: añade los nombres que usas más (Alquiler, Nómina, Compra…). Tienes dos listas: una para <b>Ingresos</b> y otra para <b>Gastos</b>."}, {"icon": "🏷️", "title": "Categorías personalizadas", "body": "Crea tus propias <b>categorías de gasto</b> (Casa, Comida, Transporte…) en Ajustes ⚙, sección <b>Categorías</b>. Aparecerán como menú desplegable en cada entrada. Las categorías son clave para los <b>gráficos circulares</b> y para entender <b>en qué gastas tu dinero</b>."}, {"icon": "🎯", "title": "Presupuesto mensual", "body": "En Ajustes ⚙, sección <b>Presupuesto por categoría</b>, fija un límite de gasto mensual. En la pantalla principal aparecerán <b>barras de progreso de colores</b>. Si superas el presupuesto, la barra se vuelve <b>roja</b> con el aviso <b>¡Superado!</b>."}, {"icon": "🔄", "title": "Movimientos recurrentes", "body": "¿Tienes gastos o ingresos fijos cada mes? Ve a Ajustes ⚙, sección <b>Recurrentes</b>. Añade la entrada con tipo, descripción, importe y categoría. PiggyFlow los insertará <b>automáticamente el día 1</b> de cada mes."}, {"icon": "◉", "title": "Gráficos y estadísticas", "body": "Pulsa el botón <b>◉</b> arriba a la derecha. Dos vistas: <b>🍩 Mes</b> — gráficos de dona por categoría. <b>📈 Tendencia</b> — gráfico de líneas con la evolución de ingresos y gastos en los <b>últimos 6 meses</b>."}, {"icon": "📅", "title": "Resumen anual", "body": "En Ajustes ⚙ pulsa <b>📅 Resumen año</b>. Muestra los 12 meses con ingresos, gastos y saldo, más el <b>total anual</b>. Navega entre años con ← →."}, {"icon": "📥", "title": "Exportar datos", "body": "En Ajustes ⚙ pulsa <b>📥 Exportar CSV</b>. Descarga un archivo con todas tus entradas compatible con Excel y Google Sheets. El archivo se llama <b>PiggyFlow_[año].csv</b>."}, {"icon": "⚙️", "title": "Ajustes y personalización", "body": "Pulsa <b>⚙</b> para personalizar: <b>Nombre</b>, <b>Idioma</b>, <b>Tema</b> claro/oscuro, <b>Paleta de colores</b> (6 opciones). También puedes releer esta guía y consultar las <b>Notas Legales</b>."}, {"icon": "🔒", "title": "Seguridad y privacidad", "body": "Tres niveles de protección: 🔐 <b>Cifrado en el navegador</b> (AES-256) antes de enviar los datos. ☁️ <b>Cifrado en servidor</b> por Supabase (SOC 2). 🔒 <b>HTTPS</b> en todo momento. Solo tú puedes descifrar tus datos. Ningún dato se comparte con terceros."}]
   },
@@ -2111,8 +2111,8 @@ const L = {
     login_title:"Bon retour !", login_sub:"Entrez votre email pour accéder à PiggyFlow. Nous vous enverrons un lien magique, sans mot de passe.", login_email_ph:"Votre email", login_btn:"Envoyer le Magic Link", login_sending:"Envoi en cours…", login_sent_title:"Email envoyé ! 🎉", login_sent_sub:"Vérifiez votre boîte mail et cliquez sur le lien que nous vous avons envoyé.", login_sent_resend:"Rien reçu ? Renvoyer", login_error:"Une erreur s'est produite. Vérifiez l'email et réessayez.", login_invalid:"Veuillez entrer un email valide.",
     privacy_btn:"Politique de Confidentialité", privacy_title:"Politique de Confidentialité", privacy_accept:"J'ai lu et j'accepte la Politique de Confidentialité", privacy_required:"Vous devez accepter la Politique de Confidentialité pour continuer.", privacy_link:"Lire la Politique de Confidentialité", delete_data:"🗑 Demander la suppression des données", delete_confirm:"Êtes-vous sûr de vouloir supprimer toutes vos données ? Cette action est irréversible.", delete_done:"Vos données ont été supprimées. Vous serez déconnecté.", logout:"Se déconnecter", logout_confirm:"Êtes-vous sûr de vouloir vous déconnecter ?", logged_as:"Connecté en tant que",
     guida:'Guide', guida_btn:'📖 Guide & Instructions',
-    guide_prev:'← Retour', guide_next:'Suivant →', guide_finish:'Commencer!', guide_skip:'Passer', guide_of:'sur',
     changelog_title:'🆕 Nouveautés de PiggyFlow', changelog_close:'Compris !',
+    guide_prev:'← Retour', guide_next:'Suivant →', guide_finish:'Commencer!', guide_skip:'Passer', guide_of:'sur',
     cats:'Catégories', budgets:'Budget mensuel', budget_hint:'Budget (€)', no_budget:'Aucun budget', over_budget:'Dépassé!', recurring:'Récurrents', rec_add:'+ Ajouter récurrent', rec_hint:'Entrée automatique chaque mois', rec_applied:'Récurrents appliqués ✓', export_csv:'📥 Exporter CSV', annual:'Récapitulatif annuel', annual_btn:'📅 Résumé année', trend:'Tendance 6 mois', note_ph:'Note (optionnel)', cat_label:'Catégorie', budget_section:'Budget par catégorie', rec_desc:'Description', rec_amt:'Montant', rec_type:'Type', rec_cat:'Catégorie', rec_del:'Supprimer', salva_rec:'Enregistrer', of_budget:'du budget',
     guide_slides:[{"icon": "🐷", "title": "Bienvenue sur PiggyFlow !", "body": "Bonjour ! PiggyFlow est votre tracker personnel de <b>revenus et dépenses mensuels</b>. Simple, sécurisé et toujours avec vous. Vos données sont <b>chiffrées et sauvegardées dans le cloud</b> automatiquement. Ce guide vous montre tout en quelques étapes."}, {"icon": "📅", "title": "Le calendrier mensuel", "body": "L'écran principal affiche le <b>mois en cours</b> sous forme de grille de cartes journalières. Chaque carte montre le jour de la semaine et un résumé avec <b>revenus en vert</b> et <b>dépenses en rouge</b>. La <b>carte d'aujourd'hui</b> est mise en évidence. Utilisez les <b>flèches ← →</b> pour naviguer entre les mois."}, {"icon": "✏️", "title": "Saisir revenus et dépenses", "body": "Appuyez sur une carte jour pour l'ouvrir. Vous trouvez deux colonnes : <b>REVENUS</b> à gauche et <b>DÉPENSES</b> à droite. Appuyez sur <b>+ ajouter</b> pour une nouvelle entrée : <b>Description</b>, <b>Montant</b>, <b>Catégorie</b> (menu 🏷) et une <b>Note optionnelle</b>. Tout est sauvegardé automatiquement."}, {"icon": "⚡", "title": "Entrées rapides", "body": "Dans les champs <b>Description</b>, commencez à taper et vos suggestions personnalisées apparaîtront. Configurez-les dans <b>Paramètres ⚙</b> : ajoutez les noms les plus utilisés (Loyer, Salaire, Courses…). Deux listes séparées : <b>Revenus</b> et <b>Dépenses</b>."}, {"icon": "🏷️", "title": "Catégories personnalisées", "body": "Créez vos propres <b>catégories de dépenses</b> (Logement, Alimentation, Transport…) dans Paramètres ⚙, section <b>Catégories</b>. Elles apparaîtront dans un menu déroulant sur chaque entrée et alimentent les <b>graphiques en secteurs</b>."}, {"icon": "🎯", "title": "Budget mensuel par catégorie", "body": "Dans Paramètres ⚙, section <b>Budget par catégorie</b>, fixez une limite mensuelle. Des <b>barres de progression colorées</b> s'affichent dans l'écran principal. Si vous dépassez, la barre devient <b>rouge</b> avec l'avertissement <b>Dépassé !</b>."}, {"icon": "🔄", "title": "Entrées récurrentes", "body": "Des dépenses ou revenus fixes chaque mois ? Allez dans Paramètres ⚙, section <b>Récurrents</b>. PiggyFlow les insérera <b>automatiquement le 1er du mois</b>."}, {"icon": "◉", "title": "Graphiques et statistiques", "body": "Appuyez sur <b>◉</b> en haut à droite. Deux vues : <b>🍩 Mois</b> — graphiques en anneau par catégorie. <b>📈 Tendance</b> — graphique linéaire sur les <b>6 derniers mois</b>."}, {"icon": "📅", "title": "Récapitulatif annuel", "body": "Dans Paramètres ⚙, appuyez sur <b>📅 Résumé année</b>. Affiche les 12 mois avec revenus, dépenses, solde et le <b>total annuel</b>. Naviguez entre les années avec ← →."}, {"icon": "📥", "title": "Exporter les données", "body": "Dans Paramètres ⚙, appuyez sur <b>📥 Exporter CSV</b>. Téléchargez un fichier compatible avec Excel et Google Sheets : <b>PiggyFlow_[année].csv</b>."}, {"icon": "⚙️", "title": "Paramètres et personnalisation", "body": "Appuyez sur <b>⚙</b> pour personnaliser : <b>Nom</b>, <b>Langue</b>, <b>Thème</b> clair/sombre, <b>Palette</b> (6 options). Retrouvez aussi cette guide et les <b>Notes Légales</b>."}, {"icon": "🔒", "title": "Sécurité et confidentialité", "body": "Trois niveaux de protection : 🔐 <b>Chiffrement navigateur</b> (AES-256). ☁️ <b>Chiffrement serveur</b> Supabase (SOC 2). 🔒 <b>HTTPS</b>. Seul vous pouvez déchiffrer vos données. Aucune donnée partagée avec des tiers."}]
   },
@@ -2131,8 +2131,8 @@ const L = {
     login_title:"Willkommen zurück!", login_sub:"Geben Sie Ihre E-Mail ein, um auf PiggyFlow zuzugreifen. Wir senden Ihnen einen Magic Link — kein Passwort nötig.", login_email_ph:"Ihre E-Mail", login_btn:"Magic Link senden", login_sending:"Wird gesendet…", login_sent_title:"E-Mail gesendet! 🎉", login_sent_sub:"Überprüfen Sie Ihr Postfach und klicken Sie auf den gesendeten Link.", login_sent_resend:"Nichts erhalten? Erneut senden", login_error:"Etwas ist schiefgelaufen. Überprüfen Sie die E-Mail und versuchen Sie es erneut.", login_invalid:"Bitte geben Sie eine gültige E-Mail ein.",
     privacy_btn:"Datenschutzerklärung", privacy_title:"Datenschutzerklärung", privacy_accept:"Ich habe die Datenschutzerklärung gelesen und akzeptiere sie", privacy_required:"Sie müssen die Datenschutzerklärung akzeptieren, um fortzufahren.", privacy_link:"Datenschutzerklärung lesen", delete_data:"🗑 Datenlöschung beantragen", delete_confirm:"Möchten Sie wirklich alle Ihre Daten löschen? Diese Aktion ist unwiderruflich.", delete_done:"Ihre Daten wurden gelöscht. Sie werden abgemeldet.", logout:"Abmelden", logout_confirm:"Möchten Sie sich wirklich abmelden?", logged_as:"Angemeldet als",
     guida:'Anleitung', guida_btn:'📖 Anleitung & Hilfe',
-    guide_prev:'← Zurück', guide_next:'Weiter →', guide_finish:'Loslegen!', guide_skip:'Überspringen', guide_of:'von',
     changelog_title:'🆕 Neuigkeiten in PiggyFlow', changelog_close:'Verstanden!',
+    guide_prev:'← Zurück', guide_next:'Weiter →', guide_finish:'Loslegen!', guide_skip:'Überspringen', guide_of:'von',
     cats:'Kategorien', budgets:'Monatsbudget', budget_hint:'Budget (€)', no_budget:'Kein Budget', over_budget:'Überschritten!', recurring:'Wiederkehrend', rec_add:'+ Wiederkehrend hinzufügen', rec_hint:'Automatischer Eintrag jeden Monat', rec_applied:'Wiederkehrende eingefügt ✓', export_csv:'📥 CSV exportieren', annual:'Jahresübersicht', annual_btn:'📅 Jahresübersicht', trend:'6-Monats-Trend', note_ph:'Notiz (optional)', cat_label:'Kategorie', budget_section:'Budget pro Kategorie', rec_desc:'Beschreibung', rec_amt:'Betrag', rec_type:'Typ', rec_cat:'Kategorie', rec_del:'Entfernen', salva_rec:'Speichern', of_budget:'des Budgets',
     guide_slides:[{"icon": "🐷", "title": "Willkommen bei PiggyFlow!", "body": "Hallo! PiggyFlow ist Ihr persönlicher Tracker für <b>monatliche Einnahmen und Ausgaben</b>. Einfach, sicher und immer dabei. Ihre Daten werden <b>verschlüsselt und automatisch in der Cloud gespeichert</b>. Diese Anleitung zeigt Ihnen alles in wenigen Schritten."}, {"icon": "📅", "title": "Der Monatskalender", "body": "Der Hauptbildschirm zeigt den <b>aktuellen Monat</b> als Raster von Tageskarten. Jede Karte zeigt den Wochentag und eine Zusammenfassung mit <b>Einnahmen in Grün</b> und <b>Ausgaben in Rot</b>. Die <b>heutige Karte</b> ist hervorgehoben. Verwenden Sie die <b>← → Pfeile</b> zum Navigieren."}, {"icon": "✏️", "title": "Einnahmen und Ausgaben eintragen", "body": "Tippen Sie auf eine Tageskarte. Sie finden zwei Spalten: <b>EINNAHMEN</b> links und <b>AUSGABEN</b> rechts. Drücken Sie <b>+ hinzufügen</b> für einen neuen Eintrag: <b>Beschreibung</b>, <b>Betrag</b>, <b>Kategorie</b> (Menü 🏷) und optionale <b>Notiz</b>. Alles wird automatisch gespeichert."}, {"icon": "⚡", "title": "Schnelleinträge", "body": "In <b>Beschreibungsfeldern</b> beginnen Sie zu tippen und Ihre personalisierten Vorschläge erscheinen. Konfigurieren Sie diese in <b>Einstellungen ⚙</b>: Miete, Gehalt, Einkauf… Zwei separate Listen: <b>Einnahmen</b> und <b>Ausgaben</b>."}, {"icon": "🏷️", "title": "Eigene Kategorien", "body": "Erstellen Sie Ihre eigenen <b>Ausgabenkategorien</b> (Wohnen, Essen, Transport…) in Einstellungen ⚙, Abschnitt <b>Kategorien</b>. Sie erscheinen als Dropdown bei jedem Eintrag und speisen die <b>Kreisdiagramme</b>."}, {"icon": "🎯", "title": "Monatsbudget pro Kategorie", "body": "In Einstellungen ⚙, Abschnitt <b>Budget pro Kategorie</b>, legen Sie monatliche Limits fest. Im Hauptbildschirm erscheinen <b>farbige Fortschrittsbalken</b>. Bei Überschreitung wird der Balken <b>rot</b> mit der Warnung <b>Überschritten!</b>."}, {"icon": "🔄", "title": "Wiederkehrende Einträge", "body": "Feste monatliche Ausgaben oder Einnahmen? Gehen Sie zu Einstellungen ⚙, Abschnitt <b>Wiederkehrend</b>. PiggyFlow fügt sie <b>automatisch am 1. des Monats</b> ein."}, {"icon": "◉", "title": "Diagramme und Statistiken", "body": "Drücken Sie <b>◉</b> oben rechts. Zwei Ansichten: <b>🍩 Monat</b> — Ringdiagramme nach Kategorie. <b>📈 Trend</b> — Liniendiagramm der letzten <b>6 Monate</b>."}, {"icon": "📅", "title": "Jahresübersicht", "body": "In Einstellungen ⚙ drücken Sie <b>📅 Jahresübersicht</b>. Zeigt alle 12 Monate mit Einnahmen, Ausgaben, Saldo und <b>Jahresgesamtsumme</b>. Mit ← → zwischen Jahren navigieren."}, {"icon": "📥", "title": "Daten exportieren", "body": "In Einstellungen ⚙ drücken Sie <b>📥 CSV exportieren</b>. Download einer Excel-kompatiblen Datei: <b>PiggyFlow_[Jahr].csv</b>."}, {"icon": "⚙️", "title": "Einstellungen und Anpassung", "body": "Drücken Sie <b>⚙</b>: <b>Name</b>, <b>Sprache</b>, <b>Hell/Dunkelmodus</b>, <b>Farbpalette</b> (6 Optionen). Hier finden Sie auch diese Anleitung und die <b>Rechtlichen Hinweise</b>."}, {"icon": "🔒", "title": "Sicherheit und Datenschutz", "body": "Drei Schutzebenen: 🔐 <b>Browser-Verschlüsselung</b> (AES-256). ☁️ <b>Server-Verschlüsselung</b> Supabase (SOC 2). 🔒 <b>HTTPS</b>. Nur Sie können Ihre Daten entschlüsseln. Keine Daten werden an Dritte weitergegeben."}]
   },
@@ -2151,8 +2151,8 @@ const L = {
     login_title:"Bem-vindo de volta!", login_sub:"Digite seu email para acessar o PiggyFlow. Enviaremos um link mágico — sem senha necessária.", login_email_ph:"Seu email", login_btn:"Enviar Magic Link", login_sending:"Enviando…", login_sent_title:"Email enviado! 🎉", login_sent_sub:"Verifique sua caixa de entrada e clique no link que enviamos.", login_sent_resend:"Não recebeu nada? Reenviar", login_error:"Algo deu errado. Verifique o email e tente novamente.", login_invalid:"Por favor, insira um email válido.",
     privacy_btn:"Política de Privacidade", privacy_title:"Política de Privacidade", privacy_accept:"Li e aceito a Política de Privacidade", privacy_required:"Você deve aceitar a Política de Privacidade para continuar.", privacy_link:"Ler a Política de Privacidade", delete_data:"🗑 Solicitar exclusão de dados", delete_confirm:"Tem certeza que deseja excluir todos os seus dados? Esta ação é irreversível.", delete_done:"Seus dados foram excluídos. Você será desconectado.", logout:"Sair da conta", logout_confirm:"Tem certeza que deseja sair?", logged_as:"Conectado como",
     guida:'Guia', guida_btn:'📖 Guia & Instruções',
-    guide_prev:'← Voltar', guide_next:'Próximo →', guide_finish:'Começar!', guide_skip:'Pular', guide_of:'de',
     changelog_title:'🆕 Novidades no PiggyFlow', changelog_close:'Entendido!',
+    guide_prev:'← Voltar', guide_next:'Próximo →', guide_finish:'Começar!', guide_skip:'Pular', guide_of:'de',
     cats:'Categorias', budgets:'Orçamento mensal', budget_hint:'Orçamento (€)', no_budget:'Sem orçamento', over_budget:'Excedido!', recurring:'Recorrentes', rec_add:'+ Adicionar recorrente', rec_hint:'Entrada automática todo mês', rec_applied:'Recorrentes aplicados ✓', export_csv:'📥 Exportar CSV', annual:'Resumo anual', annual_btn:'📅 Resumo do ano', trend:'Tendência 6 meses', note_ph:'Nota (opcional)', cat_label:'Categoria', budget_section:'Orçamento por categoria', rec_desc:'Descrição', rec_amt:'Valor', rec_type:'Tipo', rec_cat:'Categoria', rec_del:'Remover', salva_rec:'Guardar', of_budget:'do orçamento',
     guide_slides:[{"icon": "🐷", "title": "Bem-vindo ao PiggyFlow!", "body": "Olá! PiggyFlow é o seu tracker pessoal de <b>receitas e despesas mensais</b>. Simples, seguro e sempre consigo. Os seus dados são <b>cifrados e guardados na nuvem</b> automaticamente. Este guia mostra-lhe tudo em poucos passos."}, {"icon": "📅", "title": "O calendário mensal", "body": "O ecrã principal mostra o <b>mês atual</b> como uma grelha de cartões diários. Cada cartão mostra o dia da semana e um resumo com <b>receitas a verde</b> e <b>despesas a vermelho</b>. O <b>cartão de hoje</b> está destacado. Use as <b>setas ← →</b> para navegar entre meses."}, {"icon": "✏️", "title": "Adicionar receitas e despesas", "body": "Toque num cartão do dia para abri-lo. Encontrará duas colunas: <b>RECEITAS</b> à esquerda e <b>DESPESAS</b> à direita. Prima <b>+ adicionar</b> para uma nova entrada: <b>Descrição</b>, <b>Valor</b>, <b>Categoria</b> (menu 🏷) e <b>Nota opcional</b>. Tudo é guardado automaticamente."}, {"icon": "⚡", "title": "Entradas rápidas", "body": "Nos campos <b>Descrição</b>, comece a escrever e as suas sugestões personalizadas aparecerão. Configure-as nas <b>Definições ⚙</b>: Renda, Salário, Compras… Duas listas separadas: <b>Receitas</b> e <b>Despesas</b>."}, {"icon": "🏷️", "title": "Categorias personalizadas", "body": "Crie as suas próprias <b>categorias de despesa</b> (Casa, Alimentação, Transportes…) nas Definições ⚙, secção <b>Categorias</b>. Alimentam os <b>gráficos circulares</b> e ajudam a perceber <b>onde vai o seu dinheiro</b>."}, {"icon": "🎯", "title": "Orçamento mensal por categoria", "body": "Nas Definições ⚙, secção <b>Orçamento por categoria</b>, defina limites mensais. <b>Barras de progresso coloridas</b> mostram o estado. Se exceder, a barra fica <b>vermelha</b> com o aviso <b>Excedido!</b>."}, {"icon": "🔄", "title": "Lançamentos recorrentes", "body": "Tem despesas ou receitas fixas mensais? Vá às Definições ⚙, secção <b>Recorrentes</b>. PiggyFlow insere-os <b>automaticamente no dia 1</b> de cada mês."}, {"icon": "◉", "title": "Gráficos e estatísticas", "body": "Prima o botão <b>◉</b> no canto superior direito. Duas vistas: <b>🍩 Mês</b> — gráficos de rosca por categoria. <b>📈 Tendência</b> — gráfico de linhas dos <b>últimos 6 meses</b>."}, {"icon": "📅", "title": "Resumo anual", "body": "Nas Definições ⚙ prima <b>📅 Resumo do ano</b>. Mostra os 12 meses com receitas, despesas, saldo e <b>total anual</b>. Navegue entre anos com ← →."}, {"icon": "📥", "title": "Exportar dados", "body": "Nas Definições ⚙ prima <b>📥 Exportar CSV</b>. Transfere um ficheiro compatível com Excel: <b>PiggyFlow_[ano].csv</b>."}, {"icon": "⚙️", "title": "Definições e personalização", "body": "Prima <b>⚙</b>: <b>Nome</b>, <b>Língua</b>, <b>Tema</b> claro/escuro, <b>Paleta de cores</b> (6 opções). Também encontra este guia e as <b>Notas Legais</b>."}, {"icon": "🔒", "title": "Segurança e privacidade", "body": "Três níveis de proteção: 🔐 <b>Cifra no navegador</b> (AES-256). ☁️ <b>Cifra no servidor</b> Supabase (SOC 2). 🔒 <b>HTTPS</b>. Só você pode decifrar os seus dados. Nenhum dado é partilhado com terceiros."}]
   }
@@ -2165,68 +2165,58 @@ function t(key) {
 
 // ─── CURRENCIES ─────────────────────────────────────────────
 const CURRENCIES = {
-  EUR: { symbol:'€',  decimals:2, decSep:',', thouSep:'.', pos:'before' },
-  GBP: { symbol:'£',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  USD: { symbol:'$',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  CHF: { symbol:'CHF',decimals:2, decSep:'.', thouSep:"'", pos:'before' },
-  SEK: { symbol:'kr', decimals:2, decSep:',', thouSep:' ', pos:'after'  },
-  NOK: { symbol:'kr', decimals:2, decSep:',', thouSep:' ', pos:'after'  },
-  DKK: { symbol:'kr', decimals:2, decSep:',', thouSep:'.', pos:'after'  },
-  PLN: { symbol:'zł', decimals:2, decSep:',', thouSep:' ', pos:'after'  },
-  CZK: { symbol:'Kč', decimals:2, decSep:',', thouSep:' ', pos:'after'  },
-  HUF: { symbol:'Ft', decimals:0, decSep:',', thouSep:' ', pos:'after'  },
-  RON: { symbol:'lei',decimals:2, decSep:',', thouSep:'.', pos:'after'  },
-  HRK: { symbol:'kn', decimals:2, decSep:',', thouSep:'.', pos:'after'  },
-  BRL: { symbol:'R$', decimals:2, decSep:',', thouSep:'.', pos:'before' },
-  MXN: { symbol:'$',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  CAD: { symbol:'CA$',decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  AUD: { symbol:'A$', decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  NZD: { symbol:'NZ$',decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  JPY: { symbol:'¥',  decimals:0, decSep:'.',  thouSep:',', pos:'before' },
-  CNY: { symbol:'¥',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  KRW: { symbol:'₩',  decimals:0, decSep:'.',  thouSep:',', pos:'before' },
-  INR: { symbol:'₹',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  RUB: { symbol:'₽',  decimals:2, decSep:',', thouSep:' ', pos:'after'  },
-  TRY: { symbol:'₺',  decimals:2, decSep:',', thouSep:'.', pos:'before' },
-  ZAR: { symbol:'R',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  SGD: { symbol:'S$', decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  HKD: { symbol:'HK$',decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  AED: { symbol:'د.إ',decimals:2, decSep:'.', thouSep:',', pos:'after'  },
-  SAR: { symbol:'﷼',  decimals:2, decSep:'.', thouSep:',', pos:'after'  },
-  ILS: { symbol:'₪',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  EGP: { symbol:'E£', decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  NGN: { symbol:'₦',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  KES: { symbol:'KSh',decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  GHS: { symbol:'₵',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  MAD: { symbol:'MAD',decimals:2, decSep:',', thouSep:'.', pos:'after'  },
-  PKR: { symbol:'₨',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  BDT: { symbol:'৳',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  IDR: { symbol:'Rp', decimals:0, decSep:',', thouSep:'.', pos:'before' },
-  PHP: { symbol:'₱',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  VND: { symbol:'₫',  decimals:0, decSep:',', thouSep:'.', pos:'after'  },
-  THB: { symbol:'฿',  decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  MYR: { symbol:'RM', decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  TWD: { symbol:'NT$',decimals:0, decSep:'.',  thouSep:',', pos:'before' },
-  CLP: { symbol:'$',  decimals:0, decSep:',',  thouSep:'.', pos:'before' },
-  COP: { symbol:'$',  decimals:0, decSep:',',  thouSep:'.', pos:'before' },
-  ARS: { symbol:'$',  decimals:2, decSep:',', thouSep:'.', pos:'before' },
-  PEN: { symbol:'S/', decimals:2, decSep:'.', thouSep:',', pos:'before' },
-  UYU: { symbol:'$U', decimals:2, decSep:',', thouSep:'.', pos:'before' },
-  CRC: { symbol:'₡',  decimals:2, decSep:',', thouSep:'.', pos:'before' },
+  EUR:{symbol:'€', dec:2,ds:',',ts:'.',pos:'before'},
+  GBP:{symbol:'£', dec:2,ds:'.',ts:',',pos:'before'},
+  USD:{symbol:'$', dec:2,ds:'.',ts:',',pos:'before'},
+  CHF:{symbol:'CHF',dec:2,ds:'.',ts:"'",pos:'before'},
+  SEK:{symbol:'kr',dec:2,ds:',',ts:' ',pos:'after'},
+  NOK:{symbol:'kr',dec:2,ds:',',ts:' ',pos:'after'},
+  DKK:{symbol:'kr',dec:2,ds:',',ts:'.',pos:'after'},
+  PLN:{symbol:'zł',dec:2,ds:',',ts:' ',pos:'after'},
+  CZK:{symbol:'Kč',dec:2,ds:',',ts:' ',pos:'after'},
+  HUF:{symbol:'Ft',dec:0,ds:',',ts:' ',pos:'after'},
+  RON:{symbol:'lei',dec:2,ds:',',ts:'.',pos:'after'},
+  BRL:{symbol:'R$',dec:2,ds:',',ts:'.',pos:'before'},
+  MXN:{symbol:'$', dec:2,ds:'.',ts:',',pos:'before'},
+  USD_CA:{symbol:'CA$',dec:2,ds:'.',ts:',',pos:'before'},
+  AUD:{symbol:'A$',dec:2,ds:'.',ts:',',pos:'before'},
+  NZD:{symbol:'NZ$',dec:2,ds:'.',ts:',',pos:'before'},
+  SGD:{symbol:'S$',dec:2,ds:'.',ts:',',pos:'before'},
+  HKD:{symbol:'HK$',dec:2,ds:'.',ts:',',pos:'before'},
+  JPY:{symbol:'¥', dec:0,ds:'.',ts:',',pos:'before'},
+  CNY:{symbol:'¥', dec:2,ds:'.',ts:',',pos:'before'},
+  KRW:{symbol:'₩', dec:0,ds:'.',ts:',',pos:'before'},
+  INR:{symbol:'₹', dec:2,ds:'.',ts:',',pos:'before'},
+  IDR:{symbol:'Rp',dec:0,ds:',',ts:'.',pos:'before'},
+  PHP:{symbol:'₱', dec:2,ds:'.',ts:',',pos:'before'},
+  VND:{symbol:'₫', dec:0,ds:',',ts:'.',pos:'after'},
+  THB:{symbol:'฿', dec:2,ds:'.',ts:',',pos:'before'},
+  MYR:{symbol:'RM',dec:2,ds:'.',ts:',',pos:'before'},
+  TWD:{symbol:'NT$',dec:0,ds:'.',ts:',',pos:'before'},
+  RUB:{symbol:'₽', dec:2,ds:',',ts:' ',pos:'after'},
+  TRY:{symbol:'₺', dec:2,ds:',',ts:'.',pos:'before'},
+  ZAR:{symbol:'R', dec:2,ds:'.',ts:',',pos:'before'},
+  AED:{symbol:'AED',dec:2,ds:'.',ts:',',pos:'before'},
+  SAR:{symbol:'SAR',dec:2,ds:'.',ts:',',pos:'before'},
+  ILS:{symbol:'₪', dec:2,ds:'.',ts:',',pos:'before'},
+  EGP:{symbol:'E£',dec:2,ds:'.',ts:',',pos:'before'},
+  NGN:{symbol:'₦', dec:2,ds:'.',ts:',',pos:'before'},
+  KES:{symbol:'KSh',dec:2,ds:'.',ts:',',pos:'before'},
+  GHS:{symbol:'₵', dec:2,ds:'.',ts:',',pos:'before'},
+  MAD:{symbol:'MAD',dec:2,ds:',',ts:'.',pos:'after'},
+  PKR:{symbol:'₨', dec:2,ds:'.',ts:',',pos:'before'},
+  BDT:{symbol:'৳', dec:2,ds:'.',ts:',',pos:'before'},
+  ARS:{symbol:'$', dec:2,ds:',',ts:'.',pos:'before'},
+  CLP:{symbol:'$', dec:0,ds:',',ts:'.',pos:'before'},
+  COP:{symbol:'$', dec:0,ds:',',ts:'.',pos:'before'},
+  PEN:{symbol:'S/',dec:2,ds:'.',ts:',',pos:'before'},
 };
 
-// Default currency by language
-const LANG_DEFAULT_CURRENCY = {
-  it:'EUR', en:'GBP', es:'EUR', fr:'EUR', de:'EUR', pt:'BRL'
-};
+// Default currency per language
+const LANG_DEF_CUR = {it:'EUR',en:'GBP',es:'EUR',fr:'EUR',de:'EUR',pt:'BRL'};
 
-function getCurrencyCode() {
-  return cfg.currency || LANG_DEFAULT_CURRENCY[cfg.lang] || 'EUR';
-}
-
-function getCurrencyDef() {
-  return CURRENCIES[getCurrencyCode()] || CURRENCIES.EUR;
-}
+function getCurrencyCode() { return cfg.currency || LANG_DEF_CUR[cfg.lang] || 'EUR'; }
+function getCurrencyDef()  { return CURRENCIES[getCurrencyCode()] || CURRENCIES.EUR; }
 
 // ─── UTILITIES ──────────────────────────────────────────────
 function fmt(n) {
@@ -2234,12 +2224,12 @@ function fmt(n) {
   const c = getCurrencyDef();
   const abs = Math.abs(n);
   let s;
-  if (c.decimals === 0) {
-    s = Math.round(abs).toString().replace(/\B(?=(\d{3})+(?!\d))/g, c.thouSep);
+  if (c.dec === 0) {
+    s = Math.round(abs).toString().replace(/\B(?=(\d{3})+(?!\d))/g, c.ts);
   } else {
-    const parts = abs.toFixed(c.decimals).split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, c.thouSep);
-    s = parts.join(c.decSep);
+    const parts = abs.toFixed(c.dec).split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, c.ts);
+    s = parts.join(c.ds);
   }
   return c.pos === 'before' ? c.symbol + '\u00a0' + s : s + '\u00a0' + c.symbol;
 }
@@ -2725,49 +2715,12 @@ function addQuick(type) {
   renderQuickLists(); updateDL();
 }
 
-// ─── CURRENCY SELECTOR ────────────────────────────────────
-// Groups currencies by region for readability
-const CURRENCY_GROUPS = [
-  { label:'🇪🇺 Euro Zone', codes:['EUR'] },
-  { label:'🇬🇧 UK / Commonwealth', codes:['GBP','AUD','NZD','CAD','SGD','HKD'] },
-  { label:'🇺🇸 Americas', codes:['USD','CAD','MXN','BRL','ARS','CLP','COP','PEN','UYU','CRC'] },
-  { label:'🌍 Europe', codes:['CHF','SEK','NOK','DKK','PLN','CZK','HUF','RON','RUB','TRY'] },
-  { label:'🌏 Asia', codes:['JPY','CNY','KRW','INR','IDR','PHP','VND','THB','MYR','TWD','PKR','BDT'] },
-  { label:'🌍 Middle East / Africa', codes:['AED','SAR','ILS','EGP','ZAR','NGN','KES','GHS','MAD'] },
-];
-
-function populateCurrencySelector(selEl, currentCode) {
-  if (!selEl) return;
-  selEl.innerHTML = '';
-  // Auto option
-  const autoOpt = document.createElement('option');
-  autoOpt.value = '';
-  const autoDef = LANG_DEFAULT_CURRENCY[cfg.lang] || 'EUR';
-  autoOpt.textContent = t('valuta_auto') + ' (' + autoDef + ')';
-  selEl.appendChild(autoOpt);
-  // Groups
-  CURRENCY_GROUPS.forEach(g => {
-    const grp = document.createElement('optgroup');
-    grp.label = g.label;
-    g.codes.forEach(code => {
-      const c = CURRENCIES[code];
-      if (!c) return;
-      const opt = document.createElement('option');
-      opt.value = code;
-      opt.textContent = code + ' — ' + c.symbol;
-      grp.appendChild(opt);
-    });
-    selEl.appendChild(grp);
-  });
-  selEl.value = currentCode || '';
-}
-
 // ─── SETTINGS ──────────────────────────────────────────────
 function openSettings() {
   document.getElementById('s-name').value = cfg.name;
   document.getElementById('s-lang').value = cfg.lang;
   document.getElementById('s-light').checked = cfg.light;
-  populateCurrencySelector(document.getElementById('s-currency'), cfg.currency || '');
+  buildCurrencySelector();
   document.querySelectorAll('.pal-btn').forEach(btn => {
     btn.classList.toggle('sel', btn.getAttribute('data-pal') === cfg.pal);
   });
@@ -2792,8 +2745,8 @@ function saveSettings() {
   cfg.name = document.getElementById('s-name').value.trim() || 'PiggyFlow';
   cfg.lang = document.getElementById('s-lang').value;
   cfg.light = document.getElementById('s-light').checked;
-  const currSel = document.getElementById('s-currency');
-  cfg.currency = currSel ? currSel.value : '';
+  const _cs = document.getElementById('s-currency');
+  if (_cs) cfg.currency = _cs.value;
   document.getElementById('overlay').classList.remove('open');
   document.getElementById('header-name').textContent = cfg.name;
   applyTheme(); applyI18n(); updateDL(); renderMonth();
@@ -3544,19 +3497,6 @@ function bindSettingsEvents() {
   const saveBtn = document.getElementById('save-settings-btn');
   if (saveBtn) saveBtn.addEventListener('click', saveSettings);
 
-  // When language changes, update the auto option in currency selector
-  const sLang = document.getElementById('s-lang');
-  if (sLang) sLang.addEventListener('change', () => {
-    const tmpLang = sLang.value;
-    const currSel = document.getElementById('s-currency');
-    const savedVal = currSel ? currSel.value : '';
-    // temporarily use tmpLang to build labels
-    const origLang = cfg.lang;
-    cfg.lang = tmpLang;
-    populateCurrencySelector(currSel, savedVal);
-    cfg.lang = origLang;
-  });
-
   const guideBtn = document.getElementById('guide-settings-btn');
   if (guideBtn) guideBtn.addEventListener('click', function() {
     closeSettings();
@@ -3681,51 +3621,82 @@ function hasAcceptedPrivacy() {
   return !!localStorage.getItem(PRIVACY_KEY);
 }
 
-// ─── CHANGELOG ─────────────────────────────────────────────
-// Bump CHANGELOG_VERSION whenever a new patch is released.
-// Add a new entry (key = version string) with translations.
-const CHANGELOG_VERSION = '1.2.0';
-const CHANGELOG_KEY = 'pf_seen_changelog_';
+// ─── CURRENCY SELECTOR BUILDER ─────────────────────────
+function buildCurrencySelector() {
+  const sel = document.getElementById('s-currency');
+  if (!sel) return;
+  const currentVal = cfg.currency || '';
+  const langDef = LANG_DEF_CUR[cfg.lang] || 'EUR';
+  sel.innerHTML = '';
+  const autoOpt = document.createElement('option');
+  autoOpt.value = '';
+  autoOpt.textContent = (t('valuta_auto') || 'Auto') + ' (' + langDef + ')';
+  sel.appendChild(autoOpt);
+  const groups = [
+    {label:'🌍 Europa', codes:['EUR','GBP','CHF','SEK','NOK','DKK','PLN','CZK','HUF','RON','RUB','TRY']},
+    {label:'🌎 Americhe', codes:['USD','BRL','MXN','ARS','CLP','COP','PEN']},
+    {label:'🌏 Asia & Oceania', codes:['JPY','CNY','KRW','INR','IDR','PHP','VND','THB','MYR','TWD','PKR','BDT','HKD','SGD','AUD','NZD']},
+    {label:'🌍 Medio Oriente & Africa', codes:['AED','SAR','ILS','EGP','NGN','KES','GHS','MAD','ZAR']},
+  ];
+  groups.forEach(g => {
+    const grp = document.createElement('optgroup');
+    grp.label = g.label;
+    g.codes.forEach(code => {
+      const c = CURRENCIES[code]; if (!c) return;
+      const opt = document.createElement('option');
+      opt.value = code;
+      opt.textContent = code + '  ' + c.symbol;
+      grp.appendChild(opt);
+    });
+    sel.appendChild(grp);
+  });
+  sel.value = currentVal;
+  const sLang = document.getElementById('s-lang');
+  if (sLang && !sLang._cwired) {
+    sLang._cwired = true;
+    sLang.addEventListener('change', () => {
+      const saved = sel.value;
+      const d = LANG_DEF_CUR[sLang.value] || 'EUR';
+      const Ll = L[sLang.value] || L.it;
+      sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + d + ')';
+      sel.value = saved;
+    });
+  }
+}
 
+// ─── CHANGELOG ─────────────────────────────────────────────
+const CHANGELOG_VERSION = '1.2.0';
 const CHANGELOG_ENTRIES = {
   '1.2.0': {
-    it: `<b>✦ Selettore valuta</b><br>Puoi ora scegliere la valuta nelle impostazioni. La valuta viene impostata automaticamente in base alla lingua, ma puoi cambiarla liberamente. Supportate oltre 40 valute con formattazione corretta (simbolo, separatori decimali e migliaia).<br><br><b>✦ Notifiche aggiornamenti</b><br>Da ora, ad ogni nuova versione di PiggyFlow vedrai questo popup una sola volta con il riepilogo delle novità.`,
-    en: `<b>✦ Currency selector</b><br>You can now choose your currency in settings. It is set automatically based on your language, but you can change it freely. Over 40 currencies supported with correct formatting (symbol, decimal and thousands separators).<br><br><b>✦ Update notifications</b><br>From now on, each new PiggyFlow version will show this popup once with a summary of changes.`,
-    es: `<b>✦ Selector de moneda</b><br>Ahora puedes elegir tu moneda en los ajustes. Se establece automáticamente según el idioma, pero puedes cambiarla libremente. Más de 40 monedas con formato correcto (símbolo, separadores decimales y de miles).<br><br><b>✦ Notificaciones de actualización</b><br>A partir de ahora, cada nueva versión de PiggyFlow mostrará este aviso una sola vez con el resumen de novedades.`,
-    fr: `<b>✦ Sélecteur de devise</b><br>Vous pouvez désormais choisir votre devise dans les paramètres. Elle est définie automatiquement selon la langue, mais vous pouvez la modifier librement. Plus de 40 devises avec un formatage correct (symbole, séparateurs décimaux et de milliers).<br><br><b>✦ Notifications de mise à jour</b><br>Désormais, chaque nouvelle version de PiggyFlow affichera cette fenêtre une seule fois avec un résumé des changements.`,
-    de: `<b>✦ Währungsauswahl</b><br>Sie können jetzt Ihre Währung in den Einstellungen wählen. Sie wird automatisch nach Sprache gesetzt, kann aber frei geändert werden. Über 40 Währungen mit korrekter Formatierung (Symbol, Dezimal- und Tausendertrennzeichen).<br><br><b>✦ Update-Benachrichtigungen</b><br>Ab sofort zeigt jede neue PiggyFlow-Version dieses Popup einmal mit einer Änderungsübersicht.`,
-    pt: `<b>✦ Seletor de moeda</b><br>Agora pode escolher a sua moeda nas configurações. É definida automaticamente com base no idioma, mas pode alterá-la livremente. Mais de 40 moedas com formatação correta (símbolo, separadores decimais e de milhar).<br><br><b>✦ Notificações de atualização</b><br>A partir de agora, cada nova versão do PiggyFlow mostrará este popup uma vez com um resumo das alterações.`,
+    it: '<b>✦ Selettore valuta</b><br>Scegli la valuta nelle impostazioni: oltre 40 valute con simbolo e separatori decimali/migliaia corretti per ogni paese. La valuta di default segue la lingua, ma puoi cambiarla in qualsiasi momento.<br><br><b>✦ Notifiche aggiornamenti</b><br>Da ora vedrai questo popup una sola volta per ogni nuova versione di PiggyFlow, con il riepilogo delle novità.',
+    en: '<b>✦ Currency selector</b><br>Choose your currency in settings: 40+ currencies with correct symbol and decimal/thousands separators. The default follows your language, but you can change it anytime.<br><br><b>✦ Update notifications</b><br>From now on you will see this popup once per new version, summarising what changed.',
+    es: '<b>✦ Selector de moneda</b><br>Elige tu moneda en los ajustes: más de 40 monedas con símbolo y separadores correctos. La moneda predeterminada sigue el idioma.<br><br><b>✦ Notificaciones de actualización</b><br>A partir de ahora verás este aviso una vez por versión.',
+    fr: '<b>✦ Sélecteur de devise</b><br>Choisissez votre devise dans les paramètres : plus de 40 devises avec symbole et séparateurs corrects.<br><br><b>✦ Notifications</b><br>Cette fenêtre apparaîtra une fois par version.',
+    de: '<b>✦ Währungsauswahl</b><br>Wählen Sie Ihre Währung: über 40 Währungen mit korrekten Zeichen. Standard folgt der Sprache.<br><br><b>✦ Update-Benachrichtigungen</b><br>Dieses Popup erscheint einmal pro Version.',
+    pt: '<b>✦ Seletor de moeda</b><br>Escolha a sua moeda: mais de 40 moedas com símbolo e separadores corretos.<br><br><b>✦ Notificações</b><br>Este popup aparecerá uma vez por versão.',
   }
 };
 
-function showChangelogIfNeeded() {
-  const key = CHANGELOG_KEY + CHANGELOG_VERSION;
-  if (localStorage.getItem(key)) return; // already seen
+function showChangelog() {
+  const key = 'pf_cl_' + CHANGELOG_VERSION;
+  if (localStorage.getItem(key)) return;
   const entry = CHANGELOG_ENTRIES[CHANGELOG_VERSION];
   if (!entry) return;
   const lang = L[cfg.lang] ? cfg.lang : 'it';
-  const body = entry[lang] || entry['it'];
   const overlay = document.getElementById('changelog-overlay');
-  const titleEl = document.getElementById('changelog-title');
-  const verEl   = document.getElementById('changelog-version');
-  const bodyEl  = document.getElementById('changelog-body');
-  const closeBtn= document.getElementById('changelog-close-btn');
   if (!overlay) return;
-  if (titleEl) titleEl.textContent = t('changelog_title');
-  if (verEl)   verEl.textContent = 'v' + CHANGELOG_VERSION;
-  if (bodyEl)  bodyEl.innerHTML = body;
-  if (closeBtn) closeBtn.textContent = t('changelog_close');
+  const tEl = document.getElementById('changelog-title');
+  const vEl = document.getElementById('changelog-version');
+  const bEl = document.getElementById('changelog-body');
+  const btn = document.getElementById('changelog-close-btn');
+  if (tEl) tEl.textContent = t('changelog_title') || '🆕 Novità';
+  if (vEl) vEl.textContent = 'v' + CHANGELOG_VERSION;
+  if (bEl) bEl.innerHTML = entry[lang] || entry['it'];
+  if (btn) btn.textContent = t('changelog_close') || 'OK';
   overlay.style.display = 'flex';
-  if (closeBtn) closeBtn.onclick = () => {
-    overlay.style.display = 'none';
-    localStorage.setItem(key, '1');
-  };
-  overlay.onclick = e => {
-    if (e.target === overlay) {
-      overlay.style.display = 'none';
-      localStorage.setItem(key, '1');
-    }
-  };
+  function dismiss() { overlay.style.display='none'; localStorage.setItem(key,'1'); }
+  if (btn) btn.onclick = dismiss;
+  overlay.onclick = e => { if (e.target === overlay) dismiss(); };
 }
 
 // ─── INIT ──────────────────────────────────────────────────
@@ -3750,7 +3721,7 @@ async function initApp() {
   if (!localStorage.getItem('pf_seen_guide_v2')) {
     setTimeout(openGuide, 600);
   } else {
-    setTimeout(showChangelogIfNeeded, 800);
+    setTimeout(showChangelog, 800);
   }
   updateBudgetBars();
   // Apply recurring entries for current month (if not already done)
@@ -3852,18 +3823,18 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<!-- CHANGELOG OVERLAY -->
-<div id="changelog-overlay" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:16px;">
-  <div id="changelog-sheet" style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px 24px 20px;width:100%;max-width:420px;max-height:82vh;overflow-y:auto;animation:slideUp .3s cubic-bezier(.32,1,.36,1);">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <div id="changelog-title" style="font-family:'Space Mono',monospace;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;color:var(--gold);"></div>
-      <div id="changelog-version" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text3);background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:3px 10px;"></div>
+  <!-- CHANGELOG OVERLAY -->
+<div id="changelog-overlay" style="display:none;position:fixed;inset:0;z-index:450;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:26px 24px 22px;width:100%;max-width:400px;max-height:80vh;overflow-y:auto;animation:slideUp .3s cubic-bezier(.32,1,.36,1);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;">
+      <div id="changelog-title" style="font-family:'Space Mono',monospace;font-size:0.88rem;font-weight:700;color:var(--gold);letter-spacing:0.04em;"></div>
+      <div id="changelog-version" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text3);background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:3px 10px;white-space:nowrap;flex-shrink:0;"></div>
     </div>
-    <div id="changelog-body" style="font-size:0.84rem;line-height:1.7;color:var(--text2);margin-bottom:18px;"></div>
-    <button id="changelog-close-btn" style="width:100%;background:var(--accent);border:none;border-radius:var(--radius-sm);color:#111;font-family:'Space Mono',monospace;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;padding:13px;cursor:pointer;transition:filter .15s;">Got it!</button>
+    <div id="changelog-body" style="font-size:0.84rem;line-height:1.75;color:var(--text2);margin-bottom:20px;"></div>
+    <button id="changelog-close-btn" style="width:100%;background:var(--accent);border:none;border-radius:var(--radius-sm);color:#111;font-family:'Space Mono',monospace;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;padding:13px;cursor:pointer;transition:filter .15s;" onmouseover="this.style.filter='brightness(1.12)'" onmouseout="this.style.filter=''"></button>
   </div>
 </div>
 
-  <div class="app-copyright" id="app-copyright">&#169; 2025 Biolcati Massimiliano &mdash; PiggyFlow &mdash; <span id="copyright-legal-link" style="cursor:pointer;text-decoration:underline;opacity:0.8;">Note legali</span></div>
+<div class="app-copyright" id="app-copyright">&#169; 2025 Biolcati Massimiliano &mdash; PiggyFlow &mdash; <span id="copyright-legal-link" style="cursor:pointer;text-decoration:underline;opacity:0.8;">Note legali</span></div>
 </body>
 </html>
