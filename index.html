@@ -2985,9 +2985,11 @@ function renderCatsList() {
     tag.className = 'cat-tag';
     tag.innerHTML = cat + ' <span class="cat-del" data-i="' + i + '">✕</span>';
     tag.querySelector('.cat-del').addEventListener('click', () => {
-      cfg.cats.splice(i, 1);
+      const removed = cfg.cats.splice(i, 1)[0];
+      if (cfg.budgets && removed) delete cfg.budgets[removed];
       renderCatsList();
       renderBudgetList();
+      updateBudgetBars();
       scheduleSave();
     });
     el.appendChild(tag);
@@ -3095,6 +3097,7 @@ function updateBudgetBars() {
   let hasAny = false;
   Object.entries(cfg.budgets).forEach(([cat, budget]) => {
     if (!budget) return;
+    if (cfg.cats && !cfg.cats.includes(cat)) return; // category was deleted
     hasAny = true;
     const spentAmt = spent[cat] || 0;
     const pct = Math.min((spentAmt / budget) * 100, 100);
