@@ -1390,7 +1390,111 @@
       </div>
       <div class="s-row">
         <span class="s-label" data-i18n="valuta">Valuta</span>
-        <select class="s-select" id="s-currency" style="font-size:0.78rem;max-width:180px;"></select>
+        <select class="s-select" id="s-currency" style="font-size:0.78rem;">
+          <option value="">— Auto (lingua) —</option>
+          <optgroup label="🌍 Europa">
+            <option value="EUR">EUR  €  Euro</option>
+            <option value="GBP">GBP  £  Sterlina britannica</option>
+            <option value="CHF">CHF  Fr  Franco svizzero</option>
+            <option value="SEK">SEK  kr  Corona svedese</option>
+            <option value="NOK">NOK  kr  Corona norvegese</option>
+            <option value="DKK">DKK  kr  Corona danese</option>
+            <option value="ISK">ISK  kr  Corona islandese</option>
+            <option value="PLN">PLN  zł  Zloty polacco</option>
+            <option value="CZK">CZK  Kč  Corona ceca</option>
+            <option value="HUF">HUF  Ft  Fiorino ungherese</option>
+            <option value="RON">RON  lei  Leu romeno</option>
+            <option value="BGN">BGN  лв  Lev bulgaro</option>
+            <option value="HRK">HRK  kn  Kuna croata</option>
+            <option value="RSD">RSD  din  Dinaro serbo</option>
+            <option value="UAH">UAH  ₴  Grivnia ucraina</option>
+            <option value="RUB">RUB  ₽  Rublo russo</option>
+            <option value="TRY">TRY  ₺  Lira turca</option>
+          </optgroup>
+          <optgroup label="🌎 America del Nord">
+            <option value="USD">USD  $  Dollaro USA</option>
+            <option value="CAD">CAD  C$  Dollaro canadese</option>
+            <option value="MXN">MXN  $  Peso messicano</option>
+          </optgroup>
+          <optgroup label="🌎 America Latina">
+            <option value="BRL">BRL  R$  Real brasiliano</option>
+            <option value="ARS">ARS  $  Peso argentino</option>
+            <option value="CLP">CLP  $  Peso cileno</option>
+            <option value="COP">COP  $  Peso colombiano</option>
+            <option value="PEN">PEN  S/  Sol peruviano</option>
+            <option value="UYU">UYU  $U  Peso uruguaiano</option>
+            <option value="BOB">BOB  Bs  Boliviano</option>
+            <option value="PYG">PYG  ₲  Guaraní paraguayano</option>
+            <option value="GTQ">GTQ  Q  Quetzal guatemalteco</option>
+            <option value="CRC">CRC  ₡  Colón costaricano</option>
+            <option value="DOP">DOP  $  Peso dominicano</option>
+          </optgroup>
+          <optgroup label="🌏 Asia orientale">
+            <option value="JPY">JPY  ¥  Yen giapponese</option>
+            <option value="CNY">CNY  ¥  Yuan cinese</option>
+            <option value="KRW">KRW  ₩  Won sudcoreano</option>
+            <option value="TWD">TWD  NT$  Dollaro taiwanese</option>
+            <option value="HKD">HKD  HK$  Dollaro di Hong Kong</option>
+            <option value="SGD">SGD  S$  Dollaro di Singapore</option>
+            <option value="MNT">MNT  ₮  Tögrög mongolo</option>
+          </optgroup>
+          <optgroup label="🌏 Asia sud-est">
+            <option value="THB">THB  ฿  Baht tailandese</option>
+            <option value="MYR">MYR  RM  Ringgit malese</option>
+            <option value="IDR">IDR  Rp  Rupia indonesiana</option>
+            <option value="PHP">PHP  ₱  Peso filippino</option>
+            <option value="VND">VND  ₫  Dong vietnamita</option>
+            <option value="MMK">MMK  K  Kyat birmano</option>
+            <option value="KHR">KHR  ៛  Riel cambogiano</option>
+          </optgroup>
+          <optgroup label="🌏 Asia meridionale">
+            <option value="INR">INR  ₹  Rupia indiana</option>
+            <option value="PKR">PKR  ₨  Rupia pakistana</option>
+            <option value="BDT">BDT  ৳  Taka bengalese</option>
+            <option value="LKR">LKR  Rs  Rupia dello Sri Lanka</option>
+            <option value="NPR">NPR  ₨  Rupia nepalese</option>
+          </optgroup>
+          <optgroup label="🌏 Asia centrale">
+            <option value="KZT">KZT  ₸  Tenge kazako</option>
+            <option value="AZN">AZN  ₼  Manat azero</option>
+            <option value="GEL">GEL  ₾  Lari georgiano</option>
+          </optgroup>
+          <optgroup label="🌏 Oceania">
+            <option value="AUD">AUD  A$  Dollaro australiano</option>
+            <option value="NZD">NZD  NZ$  Dollaro neozelandese</option>
+            <option value="FJD">FJD  FJ$  Dollaro delle Figi</option>
+          </optgroup>
+          <optgroup label="🌍 Medio Oriente">
+            <option value="AED">AED  د.إ  Dirham degli EAU</option>
+            <option value="SAR">SAR  ﷼  Riyal saudita</option>
+            <option value="QAR">QAR  ر.ق  Riyal del Qatar</option>
+            <option value="KWD">KWD  د.ك  Dinaro kuwaitiano</option>
+            <option value="BHD">BHD  .د.ب  Dinaro del Bahrein</option>
+            <option value="OMR">OMR  ر.ع  Riyal dell'Oman</option>
+            <option value="ILS">ILS  ₪  Shekel israeliano</option>
+            <option value="JOD">JOD  JD  Dinaro giordano</option>
+          </optgroup>
+          <optgroup label="🌍 Africa">
+            <option value="ZAR">ZAR  R  Rand sudafricano</option>
+            <option value="NGN">NGN  ₦  Naira nigeriana</option>
+            <option value="KES">KES  KSh  Scellino keniota</option>
+            <option value="GHS">GHS  ₵  Cedi ghanese</option>
+            <option value="EGP">EGP  £  Sterlina egiziana</option>
+            <option value="ETB">ETB  Br  Birr etiope</option>
+            <option value="TZS">TZS  Sh  Scellino tanzaniano</option>
+            <option value="MAD">MAD  MAD  Dirham marocchino</option>
+            <option value="DZD">DZD  دج  Dinaro algerino</option>
+            <option value="TND">TND  د.ت  Dinaro tunisino</option>
+            <option value="XOF">XOF  CFA  Franco CFA occ.</option>
+            <option value="XAF">XAF  CFA  Franco CFA centr.</option>
+            <option value="MZN">MZN  MT  Metical mozambicano</option>
+            <option value="ZMW">ZMW  ZK  Kwacha zambiano</option>
+            <option value="AOA">AOA  Kz  Kwanza angolano</option>
+          </optgroup>
+          <optgroup label="🌐 Altro">
+            <option value="XBT">XBT  ₿  Bitcoin</option>
+          </optgroup>
+        </select>
       </div>
     </div>
 
@@ -2165,51 +2269,114 @@ function t(key) {
 
 // ─── CURRENCIES ─────────────────────────────────────────────
 const CURRENCIES = {
-  EUR:{symbol:'€', dec:2,ds:',',ts:'.',pos:'before'},
-  GBP:{symbol:'£', dec:2,ds:'.',ts:',',pos:'before'},
-  USD:{symbol:'$', dec:2,ds:'.',ts:',',pos:'before'},
-  CHF:{symbol:'CHF',dec:2,ds:'.',ts:"'",pos:'before'},
-  SEK:{symbol:'kr',dec:2,ds:',',ts:' ',pos:'after'},
-  NOK:{symbol:'kr',dec:2,ds:',',ts:' ',pos:'after'},
-  DKK:{symbol:'kr',dec:2,ds:',',ts:'.',pos:'after'},
-  PLN:{symbol:'zł',dec:2,ds:',',ts:' ',pos:'after'},
-  CZK:{symbol:'Kč',dec:2,ds:',',ts:' ',pos:'after'},
-  HUF:{symbol:'Ft',dec:0,ds:',',ts:' ',pos:'after'},
-  RON:{symbol:'lei',dec:2,ds:',',ts:'.',pos:'after'},
-  BRL:{symbol:'R$',dec:2,ds:',',ts:'.',pos:'before'},
-  MXN:{symbol:'$', dec:2,ds:'.',ts:',',pos:'before'},
-  USD_CA:{symbol:'CA$',dec:2,ds:'.',ts:',',pos:'before'},
-  AUD:{symbol:'A$',dec:2,ds:'.',ts:',',pos:'before'},
-  NZD:{symbol:'NZ$',dec:2,ds:'.',ts:',',pos:'before'},
-  SGD:{symbol:'S$',dec:2,ds:'.',ts:',',pos:'before'},
-  HKD:{symbol:'HK$',dec:2,ds:'.',ts:',',pos:'before'},
-  JPY:{symbol:'¥', dec:0,ds:'.',ts:',',pos:'before'},
-  CNY:{symbol:'¥', dec:2,ds:'.',ts:',',pos:'before'},
-  KRW:{symbol:'₩', dec:0,ds:'.',ts:',',pos:'before'},
-  INR:{symbol:'₹', dec:2,ds:'.',ts:',',pos:'before'},
-  IDR:{symbol:'Rp',dec:0,ds:',',ts:'.',pos:'before'},
-  PHP:{symbol:'₱', dec:2,ds:'.',ts:',',pos:'before'},
-  VND:{symbol:'₫', dec:0,ds:',',ts:'.',pos:'after'},
-  THB:{symbol:'฿', dec:2,ds:'.',ts:',',pos:'before'},
-  MYR:{symbol:'RM',dec:2,ds:'.',ts:',',pos:'before'},
-  TWD:{symbol:'NT$',dec:0,ds:'.',ts:',',pos:'before'},
-  RUB:{symbol:'₽', dec:2,ds:',',ts:' ',pos:'after'},
-  TRY:{symbol:'₺', dec:2,ds:',',ts:'.',pos:'before'},
-  ZAR:{symbol:'R', dec:2,ds:'.',ts:',',pos:'before'},
-  AED:{symbol:'AED',dec:2,ds:'.',ts:',',pos:'before'},
-  SAR:{symbol:'SAR',dec:2,ds:'.',ts:',',pos:'before'},
-  ILS:{symbol:'₪', dec:2,ds:'.',ts:',',pos:'before'},
-  EGP:{symbol:'E£',dec:2,ds:'.',ts:',',pos:'before'},
-  NGN:{symbol:'₦', dec:2,ds:'.',ts:',',pos:'before'},
-  KES:{symbol:'KSh',dec:2,ds:'.',ts:',',pos:'before'},
-  GHS:{symbol:'₵', dec:2,ds:'.',ts:',',pos:'before'},
-  MAD:{symbol:'MAD',dec:2,ds:',',ts:'.',pos:'after'},
-  PKR:{symbol:'₨', dec:2,ds:'.',ts:',',pos:'before'},
-  BDT:{symbol:'৳', dec:2,ds:'.',ts:',',pos:'before'},
-  ARS:{symbol:'$', dec:2,ds:',',ts:'.',pos:'before'},
-  CLP:{symbol:'$', dec:0,ds:',',ts:'.',pos:'before'},
-  COP:{symbol:'$', dec:0,ds:',',ts:'.',pos:'before'},
-  PEN:{symbol:'S/',dec:2,ds:'.',ts:',',pos:'before'},
+  // ── Europa ─────────────────────────────────────────────
+  EUR:{symbol:'€',  dec:2,ds:',',ts:'.',pos:'before', name:'Euro'},
+  GBP:{symbol:'£',  dec:2,ds:'.',ts:',',pos:'before', name:'Sterlina britannica'},
+  CHF:{symbol:'Fr', dec:2,ds:'.',ts:"'",pos:'before', name:'Franco svizzero'},
+  SEK:{symbol:'kr', dec:2,ds:',',ts:' ',pos:'after',  name:'Corona svedese'},
+  NOK:{symbol:'kr', dec:2,ds:',',ts:' ',pos:'after',  name:'Corona norvegese'},
+  DKK:{symbol:'kr', dec:2,ds:',',ts:'.',pos:'after',  name:'Corona danese'},
+  ISK:{symbol:'kr', dec:0,ds:'.',ts:'.',pos:'after',  name:'Corona islandese'},
+  PLN:{symbol:'zł', dec:2,ds:',',ts:' ',pos:'after',  name:'Zloty polacco'},
+  CZK:{symbol:'Kč', dec:2,ds:',',ts:' ',pos:'after',  name:'Corona ceca'},
+  HUF:{symbol:'Ft', dec:0,ds:',',ts:' ',pos:'after',  name:'Fiorino ungherese'},
+  RON:{symbol:'lei',dec:2,ds:',',ts:'.',pos:'after',  name:'Leu romeno'},
+  BGN:{symbol:'лв', dec:2,ds:',',ts:'.',pos:'after',  name:'Lev bulgaro'},
+  HRK:{symbol:'kn', dec:2,ds:',',ts:'.',pos:'after',  name:'Kuna croata'},
+  RSD:{symbol:'din',dec:2,ds:',',ts:'.',pos:'after',  name:'Dinaro serbo'},
+  UAH:{symbol:'₴',  dec:2,ds:',',ts:' ',pos:'after',  name:'Grivnia ucraina'},
+  RUB:{symbol:'₽',  dec:2,ds:',',ts:' ',pos:'after',  name:'Rublo russo'},
+  TRY:{symbol:'₺',  dec:2,ds:',',ts:'.',pos:'before', name:'Lira turca'},
+  // ── America del Nord ───────────────────────────────────
+  USD:{symbol:'$',  dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro USA'},
+  CAD:{symbol:'C$', dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro canadese'},
+  MXN:{symbol:'$',  dec:2,ds:'.',ts:',',pos:'before', name:'Peso messicano'},
+  // ── America Latina ─────────────────────────────────────
+  BRL:{symbol:'R$', dec:2,ds:',',ts:'.',pos:'before', name:'Real brasiliano'},
+  ARS:{symbol:'$',  dec:2,ds:',',ts:'.',pos:'before', name:'Peso argentino'},
+  CLP:{symbol:'$',  dec:0,ds:',',ts:'.',pos:'before', name:'Peso cileno'},
+  COP:{symbol:'$',  dec:0,ds:',',ts:'.',pos:'before', name:'Peso colombiano'},
+  PEN:{symbol:'S/', dec:2,ds:'.',ts:',',pos:'before', name:'Sol peruviano'},
+  UYU:{symbol:'$U', dec:2,ds:',',ts:'.',pos:'before', name:'Peso uruguaiano'},
+  BOB:{symbol:'Bs', dec:2,ds:'.',ts:',',pos:'before', name:'Boliviano'},
+  PYG:{symbol:'₲',  dec:0,ds:',',ts:'.',pos:'before', name:'Guaraní paraguayano'},
+  VES:{symbol:'Bs', dec:2,ds:',',ts:'.',pos:'before', name:'Bolívar venezuelano'},
+  GTQ:{symbol:'Q',  dec:2,ds:'.',ts:',',pos:'before', name:'Quetzal guatemalteco'},
+  CRC:{symbol:'₡',  dec:2,ds:',',ts:'.',pos:'before', name:'Colón costaricano'},
+  DOP:{symbol:'$',  dec:2,ds:'.',ts:',',pos:'before', name:'Peso dominicano'},
+  JMD:{symbol:'J$', dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro giamaicano'},
+  TTD:{symbol:'TT$',dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro di Trinidad'},
+  // ── Oceania ────────────────────────────────────────────
+  AUD:{symbol:'A$', dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro australiano'},
+  NZD:{symbol:'NZ$',dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro neozelandese'},
+  FJD:{symbol:'FJ$',dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro delle Figi'},
+  PGK:{symbol:'K',  dec:2,ds:'.',ts:',',pos:'before', name:'Kina di Papua N.G.'},
+  // ── Asia orientale ─────────────────────────────────────
+  JPY:{symbol:'¥',  dec:0,ds:'.',ts:',',pos:'before', name:'Yen giapponese'},
+  CNY:{symbol:'¥',  dec:2,ds:'.',ts:',',pos:'before', name:'Yuan cinese'},
+  KRW:{symbol:'₩',  dec:0,ds:'.',ts:',',pos:'before', name:'Won sudcoreano'},
+  TWD:{symbol:'NT$',dec:0,ds:'.',ts:',',pos:'before', name:'Dollaro taiwanese'},
+  HKD:{symbol:'HK$',dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro di Hong Kong'},
+  SGD:{symbol:'S$', dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro di Singapore'},
+  MOP:{symbol:'P',  dec:2,ds:'.',ts:',',pos:'before', name:'Pataca di Macao'},
+  MNT:{symbol:'₮',  dec:0,ds:',',ts:'.',pos:'before', name:'Tögrög mongolo'},
+  // ── Asia sud-orientale ─────────────────────────────────
+  THB:{symbol:'฿',  dec:2,ds:'.',ts:',',pos:'before', name:'Baht tailandese'},
+  MYR:{symbol:'RM', dec:2,ds:'.',ts:',',pos:'before', name:'Ringgit malese'},
+  IDR:{symbol:'Rp', dec:0,ds:',',ts:'.',pos:'before', name:'Rupia indonesiana'},
+  PHP:{symbol:'₱',  dec:2,ds:'.',ts:',',pos:'before', name:'Peso filippino'},
+  VND:{symbol:'₫',  dec:0,ds:',',ts:'.',pos:'after',  name:'Dong vietnamita'},
+  MMK:{symbol:'K',  dec:0,ds:',',ts:'.',pos:'before', name:'Kyat birmano'},
+  KHR:{symbol:'៛',  dec:0,ds:',',ts:'.',pos:'after',  name:'Riel cambogiano'},
+  LAK:{symbol:'₭',  dec:0,ds:',',ts:'.',pos:'before', name:'Kip laotiano'},
+  BND:{symbol:'B$', dec:2,ds:'.',ts:',',pos:'before', name:'Dollaro del Brunei'},
+  // ── Asia meridionale ───────────────────────────────────
+  INR:{symbol:'₹',  dec:2,ds:'.',ts:',',pos:'before', name:'Rupia indiana'},
+  PKR:{symbol:'₨',  dec:2,ds:'.',ts:',',pos:'before', name:'Rupia pakistana'},
+  BDT:{symbol:'৳',  dec:2,ds:'.',ts:',',pos:'before', name:'Taka bengalese'},
+  LKR:{symbol:'Rs', dec:2,ds:'.',ts:',',pos:'before', name:'Rupia dello Sri Lanka'},
+  NPR:{symbol:'₨',  dec:2,ds:'.',ts:',',pos:'before', name:'Rupia nepalese'},
+  MVR:{symbol:'Rf', dec:2,ds:'.',ts:',',pos:'before', name:'Rufiyaa maldiviana'},
+  // ── Asia centrale ──────────────────────────────────────
+  KZT:{symbol:'₸',  dec:2,ds:',',ts:' ',pos:'after',  name:'Tenge kazako'},
+  UZS:{symbol:'soʻm',dec:2,ds:',',ts:' ',pos:'after', name:'Som uzbeko'},
+  AZN:{symbol:'₼',  dec:2,ds:',',ts:'.',pos:'before', name:'Manat azero'},
+  GEL:{symbol:'₾',  dec:2,ds:',',ts:'.',pos:'before', name:'Lari georgiano'},
+  AMD:{symbol:'֏',  dec:0,ds:',',ts:'.',pos:'after',  name:'Dram armeno'},
+  // ── Medio Oriente ──────────────────────────────────────
+  AED:{symbol:'د.إ',dec:2,ds:'.',ts:',',pos:'before', name:'Dirham degli EAU'},
+  SAR:{symbol:'﷼',  dec:2,ds:'.',ts:',',pos:'before', name:'Riyal saudita'},
+  QAR:{symbol:'ر.ق',dec:2,ds:'.',ts:',',pos:'before', name:'Riyal del Qatar'},
+  KWD:{symbol:'د.ك',dec:3,ds:'.',ts:',',pos:'before', name:'Dinaro kuwaitiano'},
+  BHD:{symbol:'.د.ب',dec:3,ds:'.',ts:',',pos:'before',name:'Dinaro del Bahrein'},
+  OMR:{symbol:'ر.ع',dec:3,ds:'.',ts:',',pos:'before', name:'Riyal omanita'},
+  JOD:{symbol:'JD', dec:3,ds:'.',ts:',',pos:'before', name:'Dinaro giordano'},
+  ILS:{symbol:'₪',  dec:2,ds:'.',ts:',',pos:'before', name:'Shekel israeliano'},
+  IQD:{symbol:'ع.د',dec:0,ds:'.',ts:',',pos:'before', name:'Dinaro iracheno'},
+  IRR:{symbol:'﷼',  dec:0,ds:',',ts:'.',pos:'after',  name:'Rial iraniano'},
+  LBP:{symbol:'ل.ل',dec:0,ds:'.',ts:',',pos:'before', name:'Lira libanese'},
+  // ── Africa ─────────────────────────────────────────────
+  ZAR:{symbol:'R',  dec:2,ds:'.',ts:',',pos:'before', name:'Rand sudafricano'},
+  NGN:{symbol:'₦',  dec:2,ds:'.',ts:',',pos:'before', name:'Naira nigeriana'},
+  KES:{symbol:'KSh',dec:2,ds:'.',ts:',',pos:'before', name:'Scellino keniota'},
+  GHS:{symbol:'₵',  dec:2,ds:'.',ts:',',pos:'before', name:'Cedi ghanese'},
+  EGP:{symbol:'£',  dec:2,ds:'.',ts:',',pos:'before', name:'Sterlina egiziana'},
+  ETB:{symbol:'Br', dec:2,ds:'.',ts:',',pos:'before', name:'Birr etiope'},
+  TZS:{symbol:'Sh', dec:0,ds:'.',ts:',',pos:'before', name:'Scellino tanzaniano'},
+  UGX:{symbol:'Sh', dec:0,ds:'.',ts:',',pos:'before', name:'Scellino ugandese'},
+  MAD:{symbol:'MAD',dec:2,ds:',',ts:'.',pos:'after',  name:'Dirham marocchino'},
+  DZD:{symbol:'دج', dec:2,ds:',',ts:'.',pos:'after',  name:'Dinaro algerino'},
+  TND:{symbol:'د.ت',dec:3,ds:'.',ts:',',pos:'before', name:'Dinaro tunisino'},
+  XOF:{symbol:'CFA',dec:0,ds:',',ts:'.',pos:'after',  name:'Franco CFA (Africa occ.)'},
+  XAF:{symbol:'CFA',dec:0,ds:',',ts:'.',pos:'after',  name:'Franco CFA (Africa centr.)'},
+  MZN:{symbol:'MT', dec:2,ds:',',ts:'.',pos:'before', name:'Metical mozambicano'},
+  ZMW:{symbol:'ZK', dec:2,ds:'.',ts:',',pos:'before', name:'Kwacha zambiano'},
+  RWF:{symbol:'RF', dec:0,ds:',',ts:'.',pos:'before', name:'Franco ruandese'},
+  CDF:{symbol:'FC', dec:2,ds:',',ts:'.',pos:'before', name:'Franco congolese'},
+  AOA:{symbol:'Kz', dec:2,ds:',',ts:'.',pos:'before', name:'Kwanza angolano'},
+  MUR:{symbol:'₨',  dec:2,ds:'.',ts:',',pos:'before', name:'Rupia mauriziana'},
+  // ── Altro ──────────────────────────────────────────────
+  XBT:{symbol:'₿',  dec:8,ds:'.',ts:',',pos:'before', name:'Bitcoin'},
 };
 
 // Default currency per language
@@ -3623,42 +3790,25 @@ function hasAcceptedPrivacy() {
 
 // ─── CURRENCY SELECTOR BUILDER ─────────────────────────
 function buildCurrencySelector() {
+  // Selector is pre-built in HTML; just set the correct selected value
+  // and update the auto-option label to reflect language default
   const sel = document.getElementById('s-currency');
   if (!sel) return;
-  const currentVal = cfg.currency || '';
   const langDef = LANG_DEF_CUR[cfg.lang] || 'EUR';
-  sel.innerHTML = '';
-  const autoOpt = document.createElement('option');
-  autoOpt.value = '';
-  autoOpt.textContent = (t('valuta_auto') || 'Auto') + ' (' + langDef + ')';
-  sel.appendChild(autoOpt);
-  const groups = [
-    {label:'🌍 Europa', codes:['EUR','GBP','CHF','SEK','NOK','DKK','PLN','CZK','HUF','RON','RUB','TRY']},
-    {label:'🌎 Americhe', codes:['USD','BRL','MXN','ARS','CLP','COP','PEN']},
-    {label:'🌏 Asia & Oceania', codes:['JPY','CNY','KRW','INR','IDR','PHP','VND','THB','MYR','TWD','PKR','BDT','HKD','SGD','AUD','NZD']},
-    {label:'🌍 Medio Oriente & Africa', codes:['AED','SAR','ILS','EGP','NGN','KES','GHS','MAD','ZAR']},
-  ];
-  groups.forEach(g => {
-    const grp = document.createElement('optgroup');
-    grp.label = g.label;
-    g.codes.forEach(code => {
-      const c = CURRENCIES[code]; if (!c) return;
-      const opt = document.createElement('option');
-      opt.value = code;
-      opt.textContent = code + '  ' + c.symbol;
-      grp.appendChild(opt);
-    });
-    sel.appendChild(grp);
-  });
-  sel.value = currentVal;
+  if (sel.options[0]) {
+    const Ll = L[cfg.lang] || L.it;
+    sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + langDef + ')';
+  }
+  sel.value = cfg.currency || '';
+  // Wire lang change to update auto option label (once)
   const sLang = document.getElementById('s-lang');
   if (sLang && !sLang._cwired) {
     sLang._cwired = true;
     sLang.addEventListener('change', () => {
       const saved = sel.value;
-      const d = LANG_DEF_CUR[sLang.value] || 'EUR';
+      const def = LANG_DEF_CUR[sLang.value] || 'EUR';
       const Ll = L[sLang.value] || L.it;
-      sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + d + ')';
+      if (sel.options[0]) sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + def + ')';
       sel.value = saved;
     });
   }
