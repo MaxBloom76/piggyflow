@@ -454,8 +454,66 @@
     transition: border-color .2s;
   }
   .s-select:focus { border-color: var(--accent); }
-  /* Specificità extra per Android Chrome — sovrascrive qualsiasi regola ereditata */
-  #s-currency { color: var(--text) !important; background-image: none !important; }
+  /* ── Custom currency dropdown (Android-safe) ── */
+  .pf-sel-btn {
+    flex: 1; min-width: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem;
+    padding: 8px 11px; min-height: 38px;
+    cursor: pointer; outline: none; text-align: left;
+    transition: border-color .2s;
+  }
+  .pf-sel-btn:focus { border-color: var(--accent); }
+  .pf-sel-btn span { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pf-sel-btn svg { flex-shrink:0; opacity:.6; }
+  /* Modal montato su body — fuori da qualsiasi stacking context */
+  #pf-cur-modal {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.55); align-items: flex-end; justify-content: center;
+    padding: 0;
+  }
+  #pf-cur-modal.open { display: flex; }
+  #pf-cur-sheet {
+    background: var(--card); border-radius: 20px 20px 0 0;
+    border: 1px solid var(--border); border-bottom: none;
+    width: 100%; max-width: 520px; max-height: 70vh;
+    display: flex; flex-direction: column;
+    animation: slideUp .22s cubic-bezier(.32,1,.36,1);
+  }
+  #pf-cur-handle {
+    width: 36px; height: 4px; background: var(--border2); border-radius: 2px;
+    margin: 12px auto 0;
+  }
+  #pf-cur-title {
+    font-family: 'Space Mono', monospace; font-size: 0.82rem; font-weight: 700;
+    color: var(--text3); letter-spacing: .08em; text-transform: uppercase;
+    padding: 10px 16px 8px; flex-shrink: 0;
+  }
+  #pf-cur-search-wrap { padding: 0 12px 10px; flex-shrink: 0; }
+  #pf-cur-search {
+    width: 100%; background: var(--card2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; padding: 8px 12px; outline: none;
+  }
+  #pf-cur-search::placeholder { color: var(--text3); }
+  #pf-cur-list { overflow-y: auto; flex: 1; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
+  .pf-cur-group {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text3); padding: 10px 16px 4px;
+    border-top: 1px solid var(--border); margin-top: 4px;
+  }
+  .pf-cur-group:first-child { border-top: none; margin-top: 0; }
+  .pf-cur-opt {
+    padding: 11px 16px; font-size: 0.85rem; color: var(--text);
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
+  }
+  .pf-cur-opt:active { background: var(--card2); }
+  .pf-cur-opt.sel { color: var(--accent); }
+  .pf-cur-opt .pf-cur-check { width:16px; flex-shrink:0; color: var(--accent); font-size:.9rem; }
+  .pf-cur-opt:not(.sel) .pf-cur-check { visibility: hidden; }
+
+
   /* Currency selector: override appearance reset so native dropdown renders on Android Chrome */
 
   /* Toggle switch */
@@ -1393,74 +1451,10 @@
       </div>
       <div class="s-row">
         <span class="s-label" data-i18n="valuta">Valuta</span>
-        <select id="s-currency"
-          style="flex:1;min-width:0;min-height:38px;padding:8px 11px;border-radius:8px;font-family:Inter,sans-serif;font-size:0.83rem;border:1px solid #3a3e3a;background:#252725;color:#e8ece8;cursor:pointer;outline:none;">
-          <option value="">— Auto (lingua) —</option>
-          <optgroup label="🌍 Europa">
-            <option value="EUR">EUR € Euro</option>
-            <option value="GBP">GBP £ Sterlina britannica</option>
-            <option value="CHF">CHF Fr Franco svizzero</option>
-            <option value="SEK">SEK kr Corona svedese</option>
-            <option value="NOK">NOK kr Corona norvegese</option>
-            <option value="DKK">DKK kr Corona danese</option>
-            <option value="PLN">PLN zł Zloty polacco</option>
-            <option value="CZK">CZK Kč Corona ceca</option>
-            <option value="HUF">HUF Ft Fiorino ungherese</option>
-            <option value="RON">RON lei Leu romeno</option>
-            <option value="RSD">RSD din Dinaro serbo</option>
-            <option value="UAH">UAH ₴ Grivnia ucraina</option>
-            <option value="RUB">RUB ₽ Rublo russo</option>
-            <option value="TRY">TRY ₺ Lira turca</option>
-          </optgroup>
-          <optgroup label="🌎 America del Nord">
-            <option value="USD">USD $ Dollaro USA</option>
-            <option value="CAD">CAD C$ Dollaro canadese</option>
-            <option value="MXN">MXN $ Peso messicano</option>
-          </optgroup>
-          <optgroup label="🌎 America Latina">
-            <option value="BRL">BRL R$ Real brasiliano</option>
-            <option value="ARS">ARS $ Peso argentino</option>
-            <option value="CLP">CLP $ Peso cileno</option>
-            <option value="COP">COP $ Peso colombiano</option>
-            <option value="PEN">PEN S/ Sol peruviano</option>
-            <option value="UYU">UYU $U Peso uruguaiano</option>
-          </optgroup>
-          <optgroup label="🌏 Asia orientale">
-            <option value="JPY">JPY ¥ Yen giapponese</option>
-            <option value="CNY">CNY ¥ Yuan cinese</option>
-            <option value="KRW">KRW ₩ Won sudcoreano</option>
-            <option value="HKD">HKD HK$ Dollaro di Hong Kong</option>
-            <option value="SGD">SGD S$ Dollaro di Singapore</option>
-          </optgroup>
-          <optgroup label="🌏 Asia meridionale">
-            <option value="INR">INR ₹ Rupia indiana</option>
-            <option value="PKR">PKR ₨ Rupia pakistana</option>
-          </optgroup>
-          <optgroup label="🌏 Asia sud-est">
-            <option value="THB">THB ฿ Baht tailandese</option>
-            <option value="MYR">MYR RM Ringgit malese</option>
-            <option value="IDR">IDR Rp Rupia indonesiana</option>
-            <option value="PHP">PHP ₱ Peso filippino</option>
-            <option value="VND">VND ₫ Dong vietnamita</option>
-          </optgroup>
-          <optgroup label="🌏 Oceania">
-            <option value="AUD">AUD A$ Dollaro australiano</option>
-            <option value="NZD">NZD NZ$ Dollaro neozelandese</option>
-          </optgroup>
-          <optgroup label="🌍 Medio Oriente">
-            <option value="AED">AED د.إ Dirham EAU</option>
-            <option value="SAR">SAR ﷼ Riyal saudita</option>
-            <option value="ILS">ILS ₪ Shekel israeliano</option>
-          </optgroup>
-          <optgroup label="🌍 Africa">
-            <option value="ZAR">ZAR R Rand sudafricano</option>
-            <option value="NGN">NGN ₦ Naira nigeriana</option>
-            <option value="EGP">EGP £ Sterlina egiziana</option>
-          </optgroup>
-          <optgroup label="🌐 Altro">
-            <option value="XBT">XBT ₿ Bitcoin</option>
-          </optgroup>
-        </select>
+        <button type="button" class="pf-sel-btn" id="pf-cur-btn" onclick="pfCurOpen()">
+          <span id="pf-cur-label">—</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
 
@@ -2388,8 +2382,7 @@ function getMo(y, m) {
 // ─── THEME ─────────────────────────────────────────────────
 function applyTheme() {
   document.body.className = (cfg.light ? 'light ' : '') + cfg.pal;
-  // Re-apply currency select style when theme changes
-  if (document.getElementById('s-currency')) buildCurrencySelector();
+  buildCurrencySelector();
 }
 
 // ─── I18N APPLY ────────────────────────────────────────────
@@ -2880,30 +2873,8 @@ function openSettings() {
     rts.options[0].textContent = '📤 ' + t('uscite');
     rts.options[1].textContent = '📥 ' + t('entrate');
   }
-  // Apri l'overlay PRIMA, poi inizializza il select nel prossimo frame
-  // (timing fix: il browser deve "vedere" l'elemento prima di calcolarne lo stile)
+  buildCurrencySelector();
   document.getElementById('overlay').classList.add('open');
-  requestAnimationFrame(() => {
-    buildCurrencySelector();
-    // Diagnostica — rimuovere dopo conferma fix
-    const sel = document.getElementById('s-currency');
-    if (sel) {
-      const rect  = sel.getBoundingClientRect();
-      const style = window.getComputedStyle(sel);
-      console.log('PF-Diag currency select:',
-        'dim=' + Math.round(rect.width) + 'x' + Math.round(rect.height),
-        'display=' + style.display,
-        'visibility=' + style.visibility,
-        'color=' + style.color,
-        'bg=' + style.backgroundColor
-      );
-      // Fallback estremo: se ancora collassato, forza height
-      if (rect.height < 10) {
-        sel.style.setProperty('height', '44px', 'important');
-        sel.style.setProperty('min-height', '44px', 'important');
-      }
-    }
-  });
 }
 
 function closeSettings() {
@@ -2914,8 +2885,7 @@ function saveSettings() {
   cfg.name = document.getElementById('s-name').value.trim() || 'PiggyFlow';
   cfg.lang = document.getElementById('s-lang').value;
   cfg.light = document.getElementById('s-light').checked;
-  const _cs = document.getElementById('s-currency');
-  if (_cs) cfg.currency = _cs.value;
+  cfg.currency = _pfCurVal;
   document.getElementById('overlay').classList.remove('open');
   document.getElementById('header-name').textContent = cfg.name;
   applyTheme(); applyI18n(); updateDL(); renderMonth();
@@ -3810,65 +3780,131 @@ function hasAcceptedPrivacy() {
   return !!localStorage.getItem(PRIVACY_KEY);
 }
 
-// ─── CURRENCY SELECTOR BUILDER ─────────────────────────
+// ─── CURRENCY SELECTOR ─────────────────────────────────────
+// Valore corrente ('': auto)
+let _pfCurVal = '';
+
+// Dati valute per auto-label
+const PF_CURRENCIES = [
+  {val:'',    label:null},  // label dinamica
+  {val:'EUR', label:'EUR € Euro'},
+  {val:'GBP', label:'GBP £ Sterlina'},
+  {val:'CHF', label:'CHF Fr Franco svizzero'},
+  {val:'SEK', label:'SEK kr Corona svedese'},
+  {val:'NOK', label:'NOK kr Corona norvegese'},
+  {val:'DKK', label:'DKK kr Corona danese'},
+  {val:'PLN', label:'PLN zł Zloty polacco'},
+  {val:'CZK', label:'CZK Kč Corona ceca'},
+  {val:'HUF', label:'HUF Ft Fiorino ungherese'},
+  {val:'RON', label:'RON lei Leu romeno'},
+  {val:'RUB', label:'RUB ₽ Rublo russo'},
+  {val:'TRY', label:'TRY ₺ Lira turca'},
+  {val:'USD', label:'USD $ Dollaro USA'},
+  {val:'CAD', label:'CAD C$ Dollaro canadese'},
+  {val:'MXN', label:'MXN $ Peso messicano'},
+  {val:'BRL', label:'BRL R$ Real brasiliano'},
+  {val:'ARS', label:'ARS $ Peso argentino'},
+  {val:'CLP', label:'CLP $ Peso cileno'},
+  {val:'JPY', label:'JPY ¥ Yen giapponese'},
+  {val:'CNY', label:'CNY ¥ Yuan cinese'},
+  {val:'KRW', label:'KRW ₩ Won sudcoreano'},
+  {val:'HKD', label:'HKD HK$ Dollaro Hong Kong'},
+  {val:'SGD', label:'SGD S$ Dollaro Singapore'},
+  {val:'INR', label:'INR ₹ Rupia indiana'},
+  {val:'THB', label:'THB ฿ Baht tailandese'},
+  {val:'IDR', label:'IDR Rp Rupia indonesiana'},
+  {val:'PHP', label:'PHP ₱ Peso filippino'},
+  {val:'VND', label:'VND ₫ Dong vietnamita'},
+  {val:'AUD', label:'AUD A$ Dollaro australiano'},
+  {val:'NZD', label:'NZD NZ$ Dollaro neozelandese'},
+  {val:'AED', label:'AED د.إ Dirham EAU'},
+  {val:'SAR', label:'SAR ﷼ Riyal saudita'},
+  {val:'ILS', label:'ILS ₪ Shekel israeliano'},
+  {val:'ZAR', label:'ZAR R Rand sudafricano'},
+  {val:'NGN', label:'NGN ₦ Naira nigeriana'},
+  {val:'EGP', label:'EGP £ Sterlina egiziana'},
+  {val:'XBT', label:'XBT ₿ Bitcoin'},
+];
+
+function _pfCurAutoLabel() {
+  const def = LANG_DEF_CUR[cfg.lang] || 'EUR';
+  const Ll  = L[cfg.lang] || L.it;
+  return '— ' + (Ll.valuta_auto || 'Auto') + ' (' + def + ') —';
+}
+
+function _pfCurGetLabel(val) {
+  if (!val) return _pfCurAutoLabel();
+  const c = PF_CURRENCIES.find(c => c.val === val);
+  return c ? c.label : val;
+}
+
+function _pfCurUpdateBtn() {
+  const lbl = document.getElementById('pf-cur-label');
+  if (lbl) lbl.textContent = _pfCurGetLabel(_pfCurVal);
+}
+
 function buildCurrencySelector() {
-  const sel = document.getElementById('s-currency');
-  if (!sel) return;
-
-  // Force inline styles — !important su tutto per battere qualsiasi CSS
-  function applySelStyle() {
-    const isLight = document.body.classList.contains('light');
-    const bg     = isLight ? '#f0f1ee' : '#252725';
-    const fg     = isLight ? '#1a1e1a' : '#e8ece8';
-    const border = isLight ? '#dde0da' : '#2e312e';
-    sel.style.cssText = `
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      width: 100% !important;
-      min-height: 44px !important;
-      background-color: ${bg} !important;
-      color: ${fg} !important;
-      border: 1px solid ${border} !important;
-      border-radius: 8px !important;
-      padding: 8px 12px !important;
-      font-size: 16px !important;
-      font-family: Inter, sans-serif !important;
-      appearance: auto !important;
-      -webkit-appearance: menulist !important;
-      position: relative !important;
-      z-index: 10 !important;
-      cursor: pointer !important;
-      outline: none !important;
-    `;
+  _pfCurVal = cfg.currency || '';
+  _pfCurUpdateBtn();
+  // Aggiorna auto option text nel modal
+  const autoOpt = document.querySelector('#pf-cur-list .pf-cur-opt[data-val=""]');
+  if (autoOpt) {
+    const check = autoOpt.querySelector('.pf-cur-check');
+    autoOpt.textContent = _pfCurAutoLabel();
+    if (check) autoOpt.prepend(check);
   }
-  applySelStyle();
-
-  // Re-apply if theme toggles while settings is open
-  const lightToggle = document.getElementById('s-light');
-  if (lightToggle && !lightToggle._curStyleWired) {
-    lightToggle._curStyleWired = true;
-    lightToggle.addEventListener('change', applySelStyle);
-  }
-
-  // Update auto option label
-  const langDef = LANG_DEF_CUR[cfg.lang] || 'EUR';
-  const Ll = L[cfg.lang] || L.it;
-  if (sel.options[0]) sel.options[0].textContent = '— ' + (Ll.valuta_auto || 'Auto') + ' (' + langDef + ') —';
-  sel.value = cfg.currency || '';
-
   // Wire lang change
   const sLang = document.getElementById('s-lang');
   if (sLang && !sLang._cwired) {
     sLang._cwired = true;
-    sLang.addEventListener('change', () => {
-      const saved = sel.value;
-      const def = LANG_DEF_CUR[sLang.value] || 'EUR';
-      const Ll2 = L[sLang.value] || L.it;
-      if (sel.options[0]) sel.options[0].textContent = '— ' + (Ll2.valuta_auto || 'Auto') + ' (' + def + ') —';
-      sel.value = saved;
-    });
+    sLang.addEventListener('change', () => _pfCurUpdateBtn());
   }
+}
+
+function pfCurOpen() {
+  const modal = document.getElementById('pf-cur-modal');
+  if (!modal) return;
+  // Aggiorna selezione visiva
+  document.querySelectorAll('#pf-cur-list .pf-cur-opt').forEach(el => {
+    el.classList.toggle('sel', el.dataset.val === _pfCurVal);
+  });
+  // Reset search
+  const search = document.getElementById('pf-cur-search');
+  if (search) { search.value = ''; pfCurFilter(''); }
+  modal.classList.add('open');
+  // Scroll alla voce selezionata
+  setTimeout(() => {
+    const sel = document.querySelector('#pf-cur-list .pf-cur-opt.sel');
+    if (sel) sel.scrollIntoView({ block: 'center' });
+  }, 50);
+}
+
+function pfCurClose() {
+  const modal = document.getElementById('pf-cur-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function pfCurPick(el) {
+  _pfCurVal = el.dataset.val;
+  _pfCurUpdateBtn();
+  pfCurClose();
+}
+
+function pfCurFilter(q) {
+  const lq = q.trim().toLowerCase();
+  document.querySelectorAll('#pf-cur-list .pf-cur-opt').forEach(el => {
+    const match = !lq || el.dataset.search.includes(lq);
+    el.style.display = match ? '' : 'none';
+  });
+  document.querySelectorAll('#pf-cur-list .pf-cur-group').forEach(grp => {
+    let next = grp.nextElementSibling;
+    let anyVisible = false;
+    while (next && !next.classList.contains('pf-cur-group')) {
+      if (next.style.display !== 'none') { anyVisible = true; break; }
+      next = next.nextElementSibling;
+    }
+    grp.style.display = anyVisible ? '' : 'none';
+  });
 }
 
 // ─── CHANGELOG ─────────────────────────────────────────────
@@ -4059,5 +4095,64 @@ if ('serviceWorker' in navigator) {
 </div>
 
 <div class="app-copyright" id="app-copyright">&#169; 2025 Biolcati Massimiliano &mdash; PiggyFlow &mdash; <span id="copyright-legal-link" style="cursor:pointer;text-decoration:underline;opacity:0.8;">Note legali</span></div>
+
+<!-- CURRENCY MODAL — montato su body, fuori da tutti gli stacking context -->
+<div id="pf-cur-modal" onclick="if(event.target===this)pfCurClose()">
+  <div id="pf-cur-sheet">
+    <div id="pf-cur-handle"></div>
+    <div id="pf-cur-title">Valuta</div>
+    <div id="pf-cur-search-wrap">
+      <input id="pf-cur-search" type="text" placeholder="🔍 Cerca..." autocomplete="off"
+        oninput="pfCurFilter(this.value)">
+    </div>
+    <div id="pf-cur-list">
+      <div class="pf-cur-opt" data-val="" data-search="auto" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>— Auto (lingua) —</div>
+      <div class="pf-cur-group">🌍 Europa</div>
+      <div class="pf-cur-opt" data-val="EUR" data-search="eur eur € euro" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>EUR € Euro</div>
+      <div class="pf-cur-opt" data-val="GBP" data-search="gbp gbp £ sterlina britannica" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>GBP £ Sterlina britannica</div>
+      <div class="pf-cur-opt" data-val="CHF" data-search="chf chf fr franco svizzero" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>CHF Fr Franco svizzero</div>
+      <div class="pf-cur-opt" data-val="SEK" data-search="sek sek kr corona svedese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>SEK kr Corona svedese</div>
+      <div class="pf-cur-opt" data-val="NOK" data-search="nok nok kr corona norvegese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>NOK kr Corona norvegese</div>
+      <div class="pf-cur-opt" data-val="DKK" data-search="dkk dkk kr corona danese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>DKK kr Corona danese</div>
+      <div class="pf-cur-opt" data-val="PLN" data-search="pln pln zł zloty polacco" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>PLN zł Zloty polacco</div>
+      <div class="pf-cur-opt" data-val="CZK" data-search="czk czk kč corona ceca" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>CZK Kč Corona ceca</div>
+      <div class="pf-cur-opt" data-val="HUF" data-search="huf huf ft fiorino ungherese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>HUF Ft Fiorino ungherese</div>
+      <div class="pf-cur-opt" data-val="RON" data-search="ron ron lei leu romeno" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>RON lei Leu romeno</div>
+      <div class="pf-cur-opt" data-val="RUB" data-search="rub rub ₽ rublo russo" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>RUB ₽ Rublo russo</div>
+      <div class="pf-cur-opt" data-val="TRY" data-search="try try ₺ lira turca" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>TRY ₺ Lira turca</div>
+      <div class="pf-cur-group">🌎 America</div>
+      <div class="pf-cur-opt" data-val="USD" data-search="usd usd $ dollaro usa" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>USD $ Dollaro USA</div>
+      <div class="pf-cur-opt" data-val="CAD" data-search="cad cad c$ dollaro canadese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>CAD C$ Dollaro canadese</div>
+      <div class="pf-cur-opt" data-val="MXN" data-search="mxn mxn $ peso messicano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>MXN $ Peso messicano</div>
+      <div class="pf-cur-opt" data-val="BRL" data-search="brl brl r$ real brasiliano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>BRL R$ Real brasiliano</div>
+      <div class="pf-cur-opt" data-val="ARS" data-search="ars ars $ peso argentino" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>ARS $ Peso argentino</div>
+      <div class="pf-cur-opt" data-val="CLP" data-search="clp clp $ peso cileno" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>CLP $ Peso cileno</div>
+      <div class="pf-cur-group">🌏 Asia</div>
+      <div class="pf-cur-opt" data-val="JPY" data-search="jpy jpy ¥ yen giapponese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>JPY ¥ Yen giapponese</div>
+      <div class="pf-cur-opt" data-val="CNY" data-search="cny cny ¥ yuan cinese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>CNY ¥ Yuan cinese</div>
+      <div class="pf-cur-opt" data-val="KRW" data-search="krw krw ₩ won sudcoreano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>KRW ₩ Won sudcoreano</div>
+      <div class="pf-cur-opt" data-val="HKD" data-search="hkd hkd hk$ dollaro hong kong" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>HKD HK$ Dollaro Hong Kong</div>
+      <div class="pf-cur-opt" data-val="SGD" data-search="sgd sgd s$ dollaro singapore" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>SGD S$ Dollaro Singapore</div>
+      <div class="pf-cur-opt" data-val="INR" data-search="inr inr ₹ rupia indiana" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>INR ₹ Rupia indiana</div>
+      <div class="pf-cur-opt" data-val="THB" data-search="thb thb ฿ baht tailandese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>THB ฿ Baht tailandese</div>
+      <div class="pf-cur-opt" data-val="IDR" data-search="idr idr rp rupia indonesiana" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>IDR Rp Rupia indonesiana</div>
+      <div class="pf-cur-opt" data-val="PHP" data-search="php php ₱ peso filippino" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>PHP ₱ Peso filippino</div>
+      <div class="pf-cur-opt" data-val="VND" data-search="vnd vnd ₫ dong vietnamita" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>VND ₫ Dong vietnamita</div>
+      <div class="pf-cur-group">🌏 Oceania</div>
+      <div class="pf-cur-opt" data-val="AUD" data-search="aud aud a$ dollaro australiano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>AUD A$ Dollaro australiano</div>
+      <div class="pf-cur-opt" data-val="NZD" data-search="nzd nzd nz$ dollaro neozelandese" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>NZD NZ$ Dollaro neozelandese</div>
+      <div class="pf-cur-group">🌍 Medio Oriente</div>
+      <div class="pf-cur-opt" data-val="AED" data-search="aed aed د.إ dirham eau" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>AED د.إ Dirham EAU</div>
+      <div class="pf-cur-opt" data-val="SAR" data-search="sar sar ﷼ riyal saudita" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>SAR ﷼ Riyal saudita</div>
+      <div class="pf-cur-opt" data-val="ILS" data-search="ils ils ₪ shekel israeliano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>ILS ₪ Shekel israeliano</div>
+      <div class="pf-cur-group">🌍 Africa</div>
+      <div class="pf-cur-opt" data-val="ZAR" data-search="zar zar r rand sudafricano" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>ZAR R Rand sudafricano</div>
+      <div class="pf-cur-opt" data-val="NGN" data-search="ngn ngn ₦ naira nigeriana" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>NGN ₦ Naira nigeriana</div>
+      <div class="pf-cur-opt" data-val="EGP" data-search="egp egp £ sterlina egiziana" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>EGP £ Sterlina egiziana</div>
+      <div class="pf-cur-group">🌐 Altro</div>
+      <div class="pf-cur-opt" data-val="XBT" data-search="xbt xbt ₿ bitcoin" onclick="pfCurPick(this)"><span class="pf-cur-check">✓</span>XBT ₿ Bitcoin</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
