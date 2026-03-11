@@ -454,6 +454,15 @@
     transition: border-color .2s;
   }
   .s-select:focus { border-color: var(--accent); }
+  /* Currency selector: override appearance reset so native dropdown renders on Android Chrome */
+  #s-currency {
+    appearance: auto !important;
+    -webkit-appearance: menulist !important;
+    background-image: none !important;
+    min-height: 38px;
+    font-size: 0.78rem;
+    padding-right: 11px;
+  }
 
   /* Toggle switch */
   .toggle-wrap { display: flex; align-items: center; gap: 10px; }
@@ -1390,7 +1399,7 @@
       </div>
       <div class="s-row">
         <span class="s-label" data-i18n="valuta">Valuta</span>
-        <select class="s-select" id="s-currency" style="font-size:0.78rem;min-height:38px;appearance:auto;-webkit-appearance:menulist;background-image:none;padding-right:11px;">
+        <select class="s-select" id="s-currency">
           <option value="">— Auto (lingua) —</option>
           <optgroup label="🌍 Europa">
             <option value="EUR">EUR  €  Euro</option>
@@ -1956,13 +1965,18 @@ const sb = {
         return { data: res.ok ? res.data : null, error: res.ok ? null : res.data };
       },
       async upsert(payload, opts) {
+        // opts.onConflict is intentionally unused: conflict resolution is handled
+        // via the Prefer header (resolution=merge-duplicates), which uses the PK.
+        const body = JSON.stringify(payload);
+        // keepalive is capped at 64KB by browsers — skip it for large payloads
+        const useKeepalive = new Blob([body]).size < 60000;
         const res = await sbFetch(`/rest/v1/${table}`, {
           method: 'POST',
           headers: {
             'Prefer': 'resolution=merge-duplicates,return=minimal'
           },
-          body: JSON.stringify(payload),
-          keepalive: true
+          body,
+          keepalive: useKeepalive
         });
         return { data: res.data, error: res.ok ? null : res.data };
       }
@@ -3205,17 +3219,15 @@ function applyRecurring() {
   const moData = getMo(yr, mo);
   // Apply to day 1 of month if not already applied
   const day1 = getDay(yr, mo, 1);
-  // Check if recurring already applied (look for marker)
+  // Check if recurring already applied — use cfg (synced to Supabase) to prevent
+  // duplicate application on a second device or after localStorage wipe
   const moKey = yr + '-' + mo;
-  const appliedKey = 'pf_rec_applied';
-  let applied = {};
-  try { applied = JSON.parse(localStorage.getItem(appliedKey) || '{}'); } catch(e) {}
-  if (applied[moKey]) return;
+  if (!cfg.recApplied) cfg.recApplied = {};
+  if (cfg.recApplied[moKey]) return;
   cfg.recurring.forEach(rec => {
     day1[rec.type].push({ d: rec.desc, a: rec.amt, c: rec.cat || '', n: '' });
   });
-  applied[moKey] = true;
-  localStorage.setItem(appliedKey, JSON.stringify(applied));
+  cfg.recApplied[moKey] = true;
   scheduleSave();
   renderMonth();
   // Show pill notification
@@ -3843,8 +3855,16 @@ function buildCurrencySelector() {
 }
 
 // ─── CHANGELOG ─────────────────────────────────────────────
-const CHANGELOG_VERSION = '1.2.0';
+const CHANGELOG_VERSION = '1.2.1';
 const CHANGELOG_ENTRIES = {
+  '1.2.1': {
+    it: '<b>🔧 Fix stabilità</b><br>Selettore valuta ora visibile su Android Chrome. Salvataggio affidabile anche con grandi quantità di dati (fix keepalive > 64 KB). Le voci ricorrenti ora vengono tracciate su Supabase e non si duplicano su più dispositivi.',
+    en: '<b>🔧 Stability fixes</b><br>Currency selector now visible on Android Chrome. Reliable save even with large datasets (keepalive > 64 KB fix). Recurring entries are now tracked in Supabase and won\'t duplicate across devices.',
+    es: '<b>🔧 Correcciones</b><br>Selector de moneda visible en Android Chrome. Guardado fiable con datos grandes. Las entradas recurrentes no se duplican entre dispositivos.',
+    fr: '<b>🔧 Correctifs</b><br>Sélecteur de devise visible sur Android Chrome. Sauvegarde fiable avec beaucoup de données. Les récurrents ne se dupliquent plus entre appareils.',
+    de: '<b>🔧 Fehlerbehebungen</b><br>Währungsauswahl auf Android Chrome sichtbar. Zuverlässiges Speichern bei großen Datenmengen. Wiederkehrende werden nicht mehr auf mehreren Geräten dupliziert.',
+    pt: '<b>🔧 Correções</b><br>Seletor de moeda visível no Android Chrome. Salvamento fiável com muitos dados. Recorrentes não duplicam entre dispositivos.',
+  },
   '1.2.0': {
     it: '<b>✦ Selettore valuta</b><br>Scegli la valuta nelle impostazioni: oltre 40 valute con simbolo e separatori decimali/migliaia corretti per ogni paese. La valuta di default segue la lingua, ma puoi cambiarla in qualsiasi momento.<br><br><b>✦ Notifiche aggiornamenti</b><br>Da ora vedrai questo popup una sola volta per ogni nuova versione di PiggyFlow, con il riepilogo delle novità.',
     en: '<b>✦ Currency selector</b><br>Choose your currency in settings: 40+ currencies with correct symbol and decimal/thousands separators. The default follows your language, but you can change it anytime.<br><br><b>✦ Update notifications</b><br>From now on you will see this popup once per new version, summarising what changed.',
