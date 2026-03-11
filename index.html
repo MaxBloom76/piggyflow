@@ -454,14 +454,19 @@
     transition: border-color .2s;
   }
   .s-select:focus { border-color: var(--accent); }
-  /* Currency selector: override appearance reset so native dropdown renders on Android Chrome */
+  /* Currency selector: explicit colors so it renders correctly on all browsers/themes */
   #s-currency {
-    appearance: auto !important;
-    -webkit-appearance: menulist !important;
-    background-image: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: var(--card2) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a9488' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 8px center !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
     min-height: 38px;
     font-size: 0.78rem;
-    padding-right: 11px;
+    padding: 8px 28px 8px 11px;
   }
 
   /* Toggle switch */
@@ -3855,8 +3860,16 @@ function buildCurrencySelector() {
 }
 
 // ─── CHANGELOG ─────────────────────────────────────────────
-const CHANGELOG_VERSION = '1.2.1';
+const CHANGELOG_VERSION = '1.2.2';
 const CHANGELOG_ENTRIES = {
+  '1.2.2': {
+    it: '<b>🔧 Fix selettore valuta</b><br>Il selettore valuta ora è visibile correttamente su tutti i browser e temi (chiaro/scuro). Il fix precedente con appearance:auto causava testo invisibile su certi dispositivi — risolto con stile CSS esplicito.',
+    en: '<b>🔧 Currency selector fix</b><br>The currency selector is now correctly visible on all browsers and themes (light/dark). The previous fix using appearance:auto caused invisible text on some devices — fixed with explicit CSS styling.',
+    es: '<b>🔧 Corrección selector de moneda</b><br>El selector de moneda ahora es visible en todos los navegadores y temas. Corregido texto invisible en algunos dispositivos.',
+    fr: '<b>🔧 Correctif sélecteur de devise</b><br>Le sélecteur est désormais visible sur tous les navigateurs et thèmes. Texte invisible corrigé sur certains appareils.',
+    de: '<b>🔧 Fix Währungsauswahl</b><br>Der Währungsselektor ist jetzt auf allen Browsern und Themes sichtbar. Unsichtbarer Text auf bestimmten Geräten behoben.',
+    pt: '<b>🔧 Correção seletor de moeda</b><br>O seletor de moeda agora é visível em todos os navegadores e temas. Texto invisível corrigido em alguns dispositivos.',
+  },
   '1.2.1': {
     it: '<b>🔧 Fix stabilità</b><br>Selettore valuta ora visibile su Android Chrome. Salvataggio affidabile anche con grandi quantità di dati (fix keepalive > 64 KB). Le voci ricorrenti ora vengono tracciate su Supabase e non si duplicano su più dispositivi.',
     en: '<b>🔧 Stability fixes</b><br>Currency selector now visible on Android Chrome. Reliable save even with large datasets (keepalive > 64 KB fix). Recurring entries are now tracked in Supabase and won\'t duplicate across devices.',
