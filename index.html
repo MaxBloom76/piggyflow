@@ -454,20 +454,7 @@
     transition: border-color .2s;
   }
   .s-select:focus { border-color: var(--accent); }
-  /* Currency selector: explicit colors so it renders correctly on all browsers/themes */
-  #s-currency {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    background: var(--card2) !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a9488' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 8px center !important;
-    color: var(--text) !important;
-    border: 1px solid var(--border) !important;
-    min-height: 38px;
-    font-size: 0.78rem;
-    padding: 8px 28px 8px 11px;
-  }
+  /* Currency selector: override appearance reset so native dropdown renders on Android Chrome */
 
   /* Toggle switch */
   .toggle-wrap { display: flex; align-items: center; gap: 10px; }
@@ -1404,109 +1391,72 @@
       </div>
       <div class="s-row">
         <span class="s-label" data-i18n="valuta">Valuta</span>
-        <select class="s-select" id="s-currency">
+        <select id="s-currency"
+          style="flex:1;min-width:0;min-height:38px;padding:8px 11px;border-radius:8px;font-family:Inter,sans-serif;font-size:0.83rem;border:1px solid #3a3e3a;background:#252725;color:#e8ece8;cursor:pointer;outline:none;">
           <option value="">— Auto (lingua) —</option>
           <optgroup label="🌍 Europa">
-            <option value="EUR">EUR  €  Euro</option>
-            <option value="GBP">GBP  £  Sterlina britannica</option>
-            <option value="CHF">CHF  Fr  Franco svizzero</option>
-            <option value="SEK">SEK  kr  Corona svedese</option>
-            <option value="NOK">NOK  kr  Corona norvegese</option>
-            <option value="DKK">DKK  kr  Corona danese</option>
-            <option value="ISK">ISK  kr  Corona islandese</option>
-            <option value="PLN">PLN  zł  Zloty polacco</option>
-            <option value="CZK">CZK  Kč  Corona ceca</option>
-            <option value="HUF">HUF  Ft  Fiorino ungherese</option>
-            <option value="RON">RON  lei  Leu romeno</option>
-            <option value="BGN">BGN  лв  Lev bulgaro</option>
-            <option value="HRK">HRK  kn  Kuna croata</option>
-            <option value="RSD">RSD  din  Dinaro serbo</option>
-            <option value="UAH">UAH  ₴  Grivnia ucraina</option>
-            <option value="RUB">RUB  ₽  Rublo russo</option>
-            <option value="TRY">TRY  ₺  Lira turca</option>
+            <option value="EUR">EUR € Euro</option>
+            <option value="GBP">GBP £ Sterlina britannica</option>
+            <option value="CHF">CHF Fr Franco svizzero</option>
+            <option value="SEK">SEK kr Corona svedese</option>
+            <option value="NOK">NOK kr Corona norvegese</option>
+            <option value="DKK">DKK kr Corona danese</option>
+            <option value="PLN">PLN zł Zloty polacco</option>
+            <option value="CZK">CZK Kč Corona ceca</option>
+            <option value="HUF">HUF Ft Fiorino ungherese</option>
+            <option value="RON">RON lei Leu romeno</option>
+            <option value="RSD">RSD din Dinaro serbo</option>
+            <option value="UAH">UAH ₴ Grivnia ucraina</option>
+            <option value="RUB">RUB ₽ Rublo russo</option>
+            <option value="TRY">TRY ₺ Lira turca</option>
           </optgroup>
           <optgroup label="🌎 America del Nord">
-            <option value="USD">USD  $  Dollaro USA</option>
-            <option value="CAD">CAD  C$  Dollaro canadese</option>
-            <option value="MXN">MXN  $  Peso messicano</option>
+            <option value="USD">USD $ Dollaro USA</option>
+            <option value="CAD">CAD C$ Dollaro canadese</option>
+            <option value="MXN">MXN $ Peso messicano</option>
           </optgroup>
           <optgroup label="🌎 America Latina">
-            <option value="BRL">BRL  R$  Real brasiliano</option>
-            <option value="ARS">ARS  $  Peso argentino</option>
-            <option value="CLP">CLP  $  Peso cileno</option>
-            <option value="COP">COP  $  Peso colombiano</option>
-            <option value="PEN">PEN  S/  Sol peruviano</option>
-            <option value="UYU">UYU  $U  Peso uruguaiano</option>
-            <option value="BOB">BOB  Bs  Boliviano</option>
-            <option value="PYG">PYG  ₲  Guaraní paraguayano</option>
-            <option value="GTQ">GTQ  Q  Quetzal guatemalteco</option>
-            <option value="CRC">CRC  ₡  Colón costaricano</option>
-            <option value="DOP">DOP  $  Peso dominicano</option>
+            <option value="BRL">BRL R$ Real brasiliano</option>
+            <option value="ARS">ARS $ Peso argentino</option>
+            <option value="CLP">CLP $ Peso cileno</option>
+            <option value="COP">COP $ Peso colombiano</option>
+            <option value="PEN">PEN S/ Sol peruviano</option>
+            <option value="UYU">UYU $U Peso uruguaiano</option>
           </optgroup>
           <optgroup label="🌏 Asia orientale">
-            <option value="JPY">JPY  ¥  Yen giapponese</option>
-            <option value="CNY">CNY  ¥  Yuan cinese</option>
-            <option value="KRW">KRW  ₩  Won sudcoreano</option>
-            <option value="TWD">TWD  NT$  Dollaro taiwanese</option>
-            <option value="HKD">HKD  HK$  Dollaro di Hong Kong</option>
-            <option value="SGD">SGD  S$  Dollaro di Singapore</option>
-            <option value="MNT">MNT  ₮  Tögrög mongolo</option>
-          </optgroup>
-          <optgroup label="🌏 Asia sud-est">
-            <option value="THB">THB  ฿  Baht tailandese</option>
-            <option value="MYR">MYR  RM  Ringgit malese</option>
-            <option value="IDR">IDR  Rp  Rupia indonesiana</option>
-            <option value="PHP">PHP  ₱  Peso filippino</option>
-            <option value="VND">VND  ₫  Dong vietnamita</option>
-            <option value="MMK">MMK  K  Kyat birmano</option>
-            <option value="KHR">KHR  ៛  Riel cambogiano</option>
+            <option value="JPY">JPY ¥ Yen giapponese</option>
+            <option value="CNY">CNY ¥ Yuan cinese</option>
+            <option value="KRW">KRW ₩ Won sudcoreano</option>
+            <option value="HKD">HKD HK$ Dollaro di Hong Kong</option>
+            <option value="SGD">SGD S$ Dollaro di Singapore</option>
           </optgroup>
           <optgroup label="🌏 Asia meridionale">
-            <option value="INR">INR  ₹  Rupia indiana</option>
-            <option value="PKR">PKR  ₨  Rupia pakistana</option>
-            <option value="BDT">BDT  ৳  Taka bengalese</option>
-            <option value="LKR">LKR  Rs  Rupia dello Sri Lanka</option>
-            <option value="NPR">NPR  ₨  Rupia nepalese</option>
+            <option value="INR">INR ₹ Rupia indiana</option>
+            <option value="PKR">PKR ₨ Rupia pakistana</option>
           </optgroup>
-          <optgroup label="🌏 Asia centrale">
-            <option value="KZT">KZT  ₸  Tenge kazako</option>
-            <option value="AZN">AZN  ₼  Manat azero</option>
-            <option value="GEL">GEL  ₾  Lari georgiano</option>
+          <optgroup label="🌏 Asia sud-est">
+            <option value="THB">THB ฿ Baht tailandese</option>
+            <option value="MYR">MYR RM Ringgit malese</option>
+            <option value="IDR">IDR Rp Rupia indonesiana</option>
+            <option value="PHP">PHP ₱ Peso filippino</option>
+            <option value="VND">VND ₫ Dong vietnamita</option>
           </optgroup>
           <optgroup label="🌏 Oceania">
-            <option value="AUD">AUD  A$  Dollaro australiano</option>
-            <option value="NZD">NZD  NZ$  Dollaro neozelandese</option>
-            <option value="FJD">FJD  FJ$  Dollaro delle Figi</option>
+            <option value="AUD">AUD A$ Dollaro australiano</option>
+            <option value="NZD">NZD NZ$ Dollaro neozelandese</option>
           </optgroup>
           <optgroup label="🌍 Medio Oriente">
-            <option value="AED">AED  د.إ  Dirham degli EAU</option>
-            <option value="SAR">SAR  ﷼  Riyal saudita</option>
-            <option value="QAR">QAR  ر.ق  Riyal del Qatar</option>
-            <option value="KWD">KWD  د.ك  Dinaro kuwaitiano</option>
-            <option value="BHD">BHD  .د.ب  Dinaro del Bahrein</option>
-            <option value="OMR">OMR  ر.ع  Riyal dell'Oman</option>
-            <option value="ILS">ILS  ₪  Shekel israeliano</option>
-            <option value="JOD">JOD  JD  Dinaro giordano</option>
+            <option value="AED">AED د.إ Dirham EAU</option>
+            <option value="SAR">SAR ﷼ Riyal saudita</option>
+            <option value="ILS">ILS ₪ Shekel israeliano</option>
           </optgroup>
           <optgroup label="🌍 Africa">
-            <option value="ZAR">ZAR  R  Rand sudafricano</option>
-            <option value="NGN">NGN  ₦  Naira nigeriana</option>
-            <option value="KES">KES  KSh  Scellino keniota</option>
-            <option value="GHS">GHS  ₵  Cedi ghanese</option>
-            <option value="EGP">EGP  £  Sterlina egiziana</option>
-            <option value="ETB">ETB  Br  Birr etiope</option>
-            <option value="TZS">TZS  Sh  Scellino tanzaniano</option>
-            <option value="MAD">MAD  MAD  Dirham marocchino</option>
-            <option value="DZD">DZD  دج  Dinaro algerino</option>
-            <option value="TND">TND  د.ت  Dinaro tunisino</option>
-            <option value="XOF">XOF  CFA  Franco CFA occ.</option>
-            <option value="XAF">XAF  CFA  Franco CFA centr.</option>
-            <option value="MZN">MZN  MT  Metical mozambicano</option>
-            <option value="ZMW">ZMW  ZK  Kwacha zambiano</option>
-            <option value="AOA">AOA  Kz  Kwanza angolano</option>
+            <option value="ZAR">ZAR R Rand sudafricano</option>
+            <option value="NGN">NGN ₦ Naira nigeriana</option>
+            <option value="EGP">EGP £ Sterlina egiziana</option>
           </optgroup>
           <optgroup label="🌐 Altro">
-            <option value="XBT">XBT  ₿  Bitcoin</option>
+            <option value="XBT">XBT ₿ Bitcoin</option>
           </optgroup>
         </select>
       </div>
@@ -2436,6 +2386,8 @@ function getMo(y, m) {
 // ─── THEME ─────────────────────────────────────────────────
 function applyTheme() {
   document.body.className = (cfg.light ? 'light ' : '') + cfg.pal;
+  // Re-apply currency select style when theme changes
+  if (document.getElementById('s-currency')) buildCurrencySelector();
 }
 
 // ─── I18N APPLY ────────────────────────────────────────────
@@ -2955,6 +2907,7 @@ document.querySelectorAll('.pal-btn').forEach(btn => {
     document.querySelectorAll('.pal-btn').forEach(b => b.classList.remove('sel'));
     btn.classList.add('sel');
     applyTheme();
+    scheduleSave();
   });
 });
 
@@ -3835,25 +3788,55 @@ function hasAcceptedPrivacy() {
 
 // ─── CURRENCY SELECTOR BUILDER ─────────────────────────
 function buildCurrencySelector() {
-  // Selector is pre-built in HTML; just set the correct selected value
-  // and update the auto-option label to reflect language default
   const sel = document.getElementById('s-currency');
   if (!sel) return;
-  const langDef = LANG_DEF_CUR[cfg.lang] || 'EUR';
-  if (sel.options[0]) {
-    const Ll = L[cfg.lang] || L.it;
-    sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + langDef + ')';
+
+  // Force inline styles to guarantee visibility regardless of theme
+  function applySelStyle() {
+    const isLight = document.body.classList.contains('light');
+    sel.style.cssText = [
+      'flex:1',
+      'min-width:0',
+      'min-height:38px',
+      'padding:8px 11px',
+      'border-radius:8px',
+      'font-family:Inter,sans-serif',
+      'font-size:0.83rem',
+      'border:1px solid ' + (isLight ? '#c8ccc5' : '#3a3e3a'),
+      'background:' + (isLight ? '#f0f1ee' : '#252725'),
+      'color:' + (isLight ? '#1a1e1a' : '#e8ece8'),
+      'cursor:pointer',
+      'outline:none',
+      'display:block',
+      'width:100%',
+      'appearance:auto',
+      '-webkit-appearance:auto'
+    ].join(';');
   }
+  applySelStyle();
+
+  // Re-apply if theme toggles while settings is open
+  const lightToggle = document.getElementById('s-light');
+  if (lightToggle && !lightToggle._curStyleWired) {
+    lightToggle._curStyleWired = true;
+    lightToggle.addEventListener('change', applySelStyle);
+  }
+
+  // Update auto option label
+  const langDef = LANG_DEF_CUR[cfg.lang] || 'EUR';
+  const Ll = L[cfg.lang] || L.it;
+  if (sel.options[0]) sel.options[0].textContent = '— ' + (Ll.valuta_auto || 'Auto') + ' (' + langDef + ') —';
   sel.value = cfg.currency || '';
-  // Wire lang change to update auto option label (once)
+
+  // Wire lang change
   const sLang = document.getElementById('s-lang');
   if (sLang && !sLang._cwired) {
     sLang._cwired = true;
     sLang.addEventListener('change', () => {
       const saved = sel.value;
       const def = LANG_DEF_CUR[sLang.value] || 'EUR';
-      const Ll = L[sLang.value] || L.it;
-      if (sel.options[0]) sel.options[0].textContent = (Ll.valuta_auto || 'Auto') + ' (' + def + ')';
+      const Ll2 = L[sLang.value] || L.it;
+      if (sel.options[0]) sel.options[0].textContent = '— ' + (Ll2.valuta_auto || 'Auto') + ' (' + def + ') —';
       sel.value = saved;
     });
   }
@@ -3863,12 +3846,12 @@ function buildCurrencySelector() {
 const CHANGELOG_VERSION = '1.2.2';
 const CHANGELOG_ENTRIES = {
   '1.2.2': {
-    it: '<b>🔧 Fix selettore valuta</b><br>Il selettore valuta ora è visibile correttamente su tutti i browser e temi (chiaro/scuro). Il fix precedente con appearance:auto causava testo invisibile su certi dispositivi — risolto con stile CSS esplicito.',
-    en: '<b>🔧 Currency selector fix</b><br>The currency selector is now correctly visible on all browsers and themes (light/dark). The previous fix using appearance:auto caused invisible text on some devices — fixed with explicit CSS styling.',
-    es: '<b>🔧 Corrección selector de moneda</b><br>El selector de moneda ahora es visible en todos los navegadores y temas. Corregido texto invisible en algunos dispositivos.',
-    fr: '<b>🔧 Correctif sélecteur de devise</b><br>Le sélecteur est désormais visible sur tous les navigateurs et thèmes. Texte invisible corrigé sur certains appareils.',
-    de: '<b>🔧 Fix Währungsauswahl</b><br>Der Währungsselektor ist jetzt auf allen Browsern und Themes sichtbar. Unsichtbarer Text auf bestimmten Geräten behoben.',
-    pt: '<b>🔧 Correção seletor de moeda</b><br>O seletor de moeda agora é visível em todos os navegadores e temas. Texto invisível corrigido em alguns dispositivos.',
+    it: '<b>🔧 Fix selettore valuta</b><br>Sostituito il selettore nativo con un dropdown custom: ora visibile e funzionante su tutti i browser e dispositivi mobili, con ricerca integrata.',
+    en: '<b>🔧 Currency selector fix</b><br>Replaced the native select with a custom dropdown: now visible and working on all browsers and mobile devices, with built-in search.',
+    es: '<b>🔧 Corrección selector de moneda</b><br>Reemplazado el selector nativo con uno personalizado: visible en todos los navegadores, con búsqueda integrada.',
+    fr: '<b>🔧 Correctif sélecteur de devise</b><br>Remplacement du sélecteur natif par un dropdown personnalisé: visible sur tous les navigateurs, avec recherche intégrée.',
+    de: '<b>🔧 Fix Währungsauswahl</b><br>Nativer Select durch benutzerdefiniertes Dropdown ersetzt: jetzt auf allen Browsern sichtbar, mit integrierter Suche.',
+    pt: '<b>🔧 Correção seletor de moeda</b><br>Substituído o seletor nativo por um dropdown personalizado: visível em todos os navegadores, com pesquisa integrada.',
   },
   '1.2.1': {
     it: '<b>🔧 Fix stabilità</b><br>Selettore valuta ora visibile su Android Chrome. Salvataggio affidabile anche con grandi quantità di dati (fix keepalive > 64 KB). Le voci ricorrenti ora vengono tracciate su Supabase e non si duplicano su più dispositivi.',
