@@ -1961,7 +1961,8 @@ const sb = {
           headers: {
             'Prefer': 'resolution=merge-duplicates,return=minimal'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          keepalive: true
         });
         return { data: res.data, error: res.ok ? null : res.data };
       }
@@ -2842,9 +2843,15 @@ async function dbSave() {
   } catch(e) { setPill('err'); }
 }
 
-window.addEventListener('beforeunload', dbSave);
+window.addEventListener('beforeunload', () => {
+  if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+  dbSave();
+});
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') dbSave();
+  if (document.visibilityState === 'hidden') {
+    if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+    dbSave();
+  }
 });
 
 // ─── QUICK LISTS ───────────────────────────────────────────
