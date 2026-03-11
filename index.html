@@ -3040,14 +3040,16 @@ function renderBudgetList() {
     inp.className = 'budget-amt-input';
     inp.placeholder = '—';
     inp.value = cfg.budgets && cfg.budgets[cat] ? cfg.budgets[cat] : '';
-    inp.addEventListener('change', () => {
+    const onBudgetChange = () => {
       if (!cfg.budgets) cfg.budgets = {};
       const v = parseFloat(inp.value);
       if (v > 0) cfg.budgets[cat] = v;
       else delete cfg.budgets[cat];
       scheduleSave();
       updateBudgetBars();
-    });
+    };
+    inp.addEventListener('change', onBudgetChange);
+    inp.addEventListener('input', onBudgetChange);
     row.appendChild(label);
     row.appendChild(inp);
     el.appendChild(row);
@@ -3079,6 +3081,17 @@ function updateBudgetBars() {
   const container = existing || document.createElement('div');
   container.id = 'budget-bars-area';
   container.innerHTML = '';
+
+  // Purge stale or zero-value entries from cfg.budgets
+  if (cfg.budgets) {
+    Object.keys(cfg.budgets).forEach(k => {
+      const v = cfg.budgets[k];
+      if (!v || v <= 0 || (cfg.cats && !cfg.cats.includes(k))) {
+        delete cfg.budgets[k];
+      }
+    });
+  }
+
   if (!cfg.budgets || Object.keys(cfg.budgets).length === 0) {
     if (existing) existing.remove();
     return;
