@@ -3084,12 +3084,17 @@ function updateBudgetBars() {
 
   // Purge stale or zero-value entries from cfg.budgets
   if (cfg.budgets) {
+    let purged = false;
     Object.keys(cfg.budgets).forEach(k => {
       const v = cfg.budgets[k];
-      if (!v || v <= 0 || (cfg.cats && !cfg.cats.includes(k))) {
+      const catMissing = !cfg.cats || !cfg.cats.includes(k);
+      if (!v || v <= 0 || catMissing) {
         delete cfg.budgets[k];
+        purged = true;
       }
     });
+    // Persist cleanup so stale entries don't come back from Supabase on next load
+    if (purged) scheduleSave();
   }
 
   if (!cfg.budgets || Object.keys(cfg.budgets).length === 0) {
