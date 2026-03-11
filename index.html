@@ -454,6 +454,8 @@
     transition: border-color .2s;
   }
   .s-select:focus { border-color: var(--accent); }
+  /* Specificità extra per Android Chrome — sovrascrive qualsiasi regola ereditata */
+  #s-currency { color: var(--text) !important; background-image: none !important; }
   /* Currency selector: override appearance reset so native dropdown renders on Android Chrome */
 
   /* Toggle switch */
@@ -2865,7 +2867,6 @@ function openSettings() {
   document.getElementById('s-name').value = cfg.name;
   document.getElementById('s-lang').value = cfg.lang;
   document.getElementById('s-light').checked = cfg.light;
-  buildCurrencySelector();
   document.querySelectorAll('.pal-btn').forEach(btn => {
     btn.classList.toggle('sel', btn.getAttribute('data-pal') === cfg.pal);
   });
@@ -2879,7 +2880,30 @@ function openSettings() {
     rts.options[0].textContent = '📤 ' + t('uscite');
     rts.options[1].textContent = '📥 ' + t('entrate');
   }
+  // Apri l'overlay PRIMA, poi inizializza il select nel prossimo frame
+  // (timing fix: il browser deve "vedere" l'elemento prima di calcolarne lo stile)
   document.getElementById('overlay').classList.add('open');
+  requestAnimationFrame(() => {
+    buildCurrencySelector();
+    // Diagnostica — rimuovere dopo conferma fix
+    const sel = document.getElementById('s-currency');
+    if (sel) {
+      const rect  = sel.getBoundingClientRect();
+      const style = window.getComputedStyle(sel);
+      console.log('PF-Diag currency select:',
+        'dim=' + Math.round(rect.width) + 'x' + Math.round(rect.height),
+        'display=' + style.display,
+        'visibility=' + style.visibility,
+        'color=' + style.color,
+        'bg=' + style.backgroundColor
+      );
+      // Fallback estremo: se ancora collassato, forza height
+      if (rect.height < 10) {
+        sel.style.setProperty('height', '44px', 'important');
+        sel.style.setProperty('min-height', '44px', 'important');
+      }
+    }
+  });
 }
 
 function closeSettings() {
@@ -3791,27 +3815,32 @@ function buildCurrencySelector() {
   const sel = document.getElementById('s-currency');
   if (!sel) return;
 
-  // Force inline styles to guarantee visibility regardless of theme
+  // Force inline styles — !important su tutto per battere qualsiasi CSS
   function applySelStyle() {
     const isLight = document.body.classList.contains('light');
-    sel.style.cssText = [
-      'flex:1',
-      'min-width:0',
-      'min-height:38px',
-      'padding:8px 11px',
-      'border-radius:8px',
-      'font-family:Inter,sans-serif',
-      'font-size:0.83rem',
-      'border:1px solid ' + (isLight ? '#c8ccc5' : '#3a3e3a'),
-      'background:' + (isLight ? '#f0f1ee' : '#252725'),
-      'color:' + (isLight ? '#1a1e1a' : '#e8ece8'),
-      'cursor:pointer',
-      'outline:none',
-      'display:block',
-      'width:100%',
-      'appearance:auto',
-      '-webkit-appearance:auto'
-    ].join(';');
+    const bg     = isLight ? '#f0f1ee' : '#252725';
+    const fg     = isLight ? '#1a1e1a' : '#e8ece8';
+    const border = isLight ? '#dde0da' : '#2e312e';
+    sel.style.cssText = `
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      width: 100% !important;
+      min-height: 44px !important;
+      background-color: ${bg} !important;
+      color: ${fg} !important;
+      border: 1px solid ${border} !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      font-size: 16px !important;
+      font-family: Inter, sans-serif !important;
+      appearance: auto !important;
+      -webkit-appearance: menulist !important;
+      position: relative !important;
+      z-index: 10 !important;
+      cursor: pointer !important;
+      outline: none !important;
+    `;
   }
   applySelStyle();
 
